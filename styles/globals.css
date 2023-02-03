@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.const {
+  @apply text-blue-500;
+}
+
+.variable {
+  @apply text-sky-400;
+}
+
+.white {
+  @apply text-white;
+}
+
+.key {
+  @apply text-blue-200;
+}
+
+.value-string {
+  @apply text-orange-400;
+}
+
+.value-number {
+  @apply text-green-300;
+}
+
+.value-undefined {
+  @apply text-blue-500;
+}
+
+.value-boolean {
+  @apply text-blue-500;
+}
+
+.value-error {
+  @apply text-red-500;
+}
+
+.brackets {
+  @apply text-purple-400;
+}
+
+.text-size {
+  @apply text-xs sm:text-sm md:text-base lg:text-lg;
+}
