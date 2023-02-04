@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  --scroll-behavior: smooth !important;
+  scroll-behavior: smooth !important;
+}
+
+.mockup-code::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.mockup-code::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.mockup-code::-webkit-scrollbar-thumb {
+  @apply bg-zinc-600;
+  @apply rounded-full;
+}
+
 .const {
   @apply text-blue-500;
 }
