@@ -1,6 +1,22 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
+const isGithubActions = process.env.GITHUB_ACTIONS || false;
+
+const repo = "personal-website";
+const assetPrefix = `/${repo}/`;
+const basePath = `/${repo}`;
+
+if (isGithubActions) {
+  // trim off `<owner>/`
+  const repo = process.env.GITHUB_REPOSITORY.replace(/.*?\//, "");
+
+  assetPrefix = `/${repo}/`;
+  basePath = `/${repo}`;
 }
 
-module.exports = nextConfig
+const nextConfig = {
+  reactStrictMode: true,
+  assetPrefix: assetPrefix,
+  basePath: basePath,
+};
+
+module.exports = nextConfig;
