@@ -20,6 +20,7 @@ export default function useTheme() {
     const newTheme = theme === "light" ? "dark" : "light";
     setTheme(newTheme);
     localStorage.setItem("theme", newTheme);
+    window.location.reload(); // Workaround because useState doesn't update the theme in backgroundImage.tsx
   }
 
   return { theme, toggleTheme };
