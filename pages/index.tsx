@@ -30,6 +30,7 @@ export const getStaticProps = async () => {
       me: await getMe(),
       projects: await getProjects(),
     },
+    revalidate: 60 * 60, // Every hours
   };
 };
 
