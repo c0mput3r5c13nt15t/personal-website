@@ -1,6 +1,4 @@
 import Head from "next/head";
-import useProjects from "@/lib/hooks/useProjects";
-import useMe from "@/lib/hooks/useMe";
 import TopBar from "@/components/topBar";
 import CodeWindow from "@/components/codeWindow";
 import BackgroundImage from "@/components/backgroundImage";

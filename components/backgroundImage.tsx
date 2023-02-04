@@ -10,7 +10,8 @@ export default function BackgroundImage() {
         loading="eager"
         src={"/bg-" + theme + ".jpg"}
         fill={true}
-        unoptimized={true}
+        sizes="100vw"
+        quality={100}
         priority={true}
         placeholder="blur"
         blurDataURL={"/bg-" + theme + "-blur.webp"}
