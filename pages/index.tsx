@@ -5,11 +5,37 @@ import TopBar from "@/components/topBar";
 import CodeWindow from "@/components/codeWindow";
 import BackgroundImage from "@/components/backgroundImage";
 import Footer from "@/components/footer";
+import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-export default function Home() {
-  const { projects } = useProjects();
-  const { me } = useMe();
+export const getStaticProps = async () => {
+  async function getProjects(): Promise<any[]> {
+    const q = query(collection(db, "/projects"));
+    const querySnapshot = await getDocs(q);
+    const projects: any[] = [];
+    querySnapshot.docs.map((doc) => {
+      const data = doc.data();
+      const new_project = { id: doc.id, ...data };
+      projects.push(new_project);
+    });
+    return projects;
+  }
 
+  async function getMe(): Promise<any> {
+    const docRef = doc(db, "me", "0WGLUBVzOZYN07RZ2bmI");
+    const docSnap = await getDoc(docRef);
+    return docSnap.data();
+  }
+
+  return {
+    props: {
+      me: await getMe(),
+      projects: await getProjects(),
+    },
+  };
+};
+
+export default function Home({ me, projects }: { me: any; projects: any[] }) {
   const keysByOrderForMe = [
     "name",
     "age",
