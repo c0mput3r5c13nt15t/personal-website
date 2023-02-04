@@ -35,7 +35,7 @@ export default function CodeWindow({
           <>
             <Link href={value} target="_blank">
               <span className="value-string">
-                "<span className="underline">{value}</span>"
+                &quot;<span className="underline">{value}</span>&quot;
               </span>
             </Link>
             <span className="white">,</span>
@@ -46,7 +46,7 @@ export default function CodeWindow({
           <>
             <Link href={"mailto:" + value} target="_blank">
               <span className="value-string">
-                "<span className="underline">{value}</span>"
+                &quot;<span className="underline">{value}</span>&quot;
               </span>
             </Link>
             <span className="white">,</span>
@@ -76,7 +76,7 @@ export default function CodeWindow({
       return (
         <>
           <span className="value-string inline-block max-w-sm break-before-all whitespace-normal">
-            "{value}"<span className="white">,</span>
+            &quot;{value}&quot;<span className="white">,</span>
           </span>
         </>
       );
