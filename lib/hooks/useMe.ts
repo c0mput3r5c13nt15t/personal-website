@@ -6,10 +6,10 @@ export default function useMe() {
   const [me, setMe] = useState<any>({});
 
   useEffect(() => {
-    getProjects().then((me) => setMe(me));
+    getMe().then((me) => setMe(me));
   }, []);
 
-  async function getProjects(): Promise<any> {
+  async function getMe(): Promise<any> {
     const docRef = doc(db, "me", "0WGLUBVzOZYN07RZ2bmI");
     const docSnap = await getDoc(docRef);
     return docSnap.data();
