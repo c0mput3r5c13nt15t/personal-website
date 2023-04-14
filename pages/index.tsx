@@ -50,7 +50,7 @@ export const getStaticProps = async () => {
         },
       ],
     },
-    revalidate: 1, //60 * 60, // Every hours
+    revalidate: 60 * 60, // Every hours
   };
 };
 
