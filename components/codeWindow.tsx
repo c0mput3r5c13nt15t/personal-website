@@ -7,10 +7,12 @@ import "simplebar-react/dist/simplebar.min.css";
 export default function CodeWindow({
   object,
   keysByOrder,
+  hiddenKeys = [],
   variableName,
 }: {
   object: any;
   keysByOrder: string[];
+  hiddenKeys?: string[];
   variableName?: string;
 }) {
   function compareObjectPropertyKeys(a: string, b: string) {
@@ -75,7 +77,7 @@ export default function CodeWindow({
       }
       return (
         <>
-          <span className="value-string inline-block max-w-sm break-before-all whitespace-normal">
+          <span className="value-string inline-block break-before-all whitespace-normal ">
             &quot;{value}&quot;<span className="white">,</span>
           </span>
         </>
@@ -144,7 +146,7 @@ export default function CodeWindow({
   }
 
   return (
-    <div className="mockup-code bg-zinc-800 text-zinc-600 bg-opacity-95 text-size w-full">
+    <div className="mockup-code bg-zinc-800 text-zinc-600 bg-opacity-95 text-size w-full h-full">
       <div className="mx-4">
         <SimpleBar>
           <pre className="brackets -ml-4">
@@ -155,6 +157,7 @@ export default function CodeWindow({
             <span className="white">=</span> {"{"}
           </pre>
           {Object.keys(object)
+            .filter((key) => !hiddenKeys.includes(key))
             .sort((a, b) => {
               return compareObjectPropertyKeys(a, b);
             })

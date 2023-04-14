@@ -5,15 +5,16 @@ import BackgroundImage from "@/components/backgroundImage";
 import Footer from "@/components/footer";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
+import Section from "@/components/section";
 
 export const getStaticProps = async () => {
-  async function getProjects(): Promise<any[]> {
-    const q = query(collection(db, "/projects"));
+  async function getProjects(section: string): Promise<any[]> {
+    const q = query(collection(db, section));
     const querySnapshot = await getDocs(q);
     const projects: any[] = [];
     querySnapshot.docs.map((doc) => {
       const data = doc.data();
-      const new_project = { id: doc.id, ...data };
+      const new_project = { ...data };
       projects.push(new_project);
     });
     return projects;
@@ -28,13 +29,32 @@ export const getStaticProps = async () => {
   return {
     props: {
       me: await getMe(),
-      projects: await getProjects(),
+      sections: [
+        {
+          title: "Computer Science Projects",
+          description:
+            "In elementary school, I learned to program. Since then I have worked on many projects. Here is a selection of the most important ones. Even more can be found on my GitHub profile.",
+          projects: await getProjects("projects"),
+        },
+        {
+          title: "Competitions",
+          description:
+            "Over the years, I have also taken part in many competitions, the most important ones of which are listed here.",
+          projects: await getProjects("competitions"),
+        },
+        {
+          title: "Miscellaneous",
+          description:
+            "Besides my computer science projects and competitions, I have done several internships and am involved in voluntary work.",
+          projects: await getProjects("miscellaneous"),
+        },
+      ],
     },
-    revalidate: 60 * 60, // Every hours
+    revalidate: 1, //60 * 60, // Every hours
   };
 };
 
-export default function Home({ me, projects }: { me: any; projects: any[] }) {
+export default function Home({ me, sections }: { me: any; sections: any[] }) {
   const keysByOrderForMe = [
     "name",
     "age",
@@ -43,18 +63,6 @@ export default function Home({ me, projects }: { me: any; projects: any[] }) {
     "fields",
     "languages",
     "contact",
-  ];
-
-  const keysByOrderForProjects = [
-    "id",
-    "name",
-    "description",
-    "under-development",
-    "university",
-    "lecture",
-    "url",
-    "github",
-    "technologies",
   ];
 
   function scrollDown() {
@@ -74,7 +82,7 @@ export default function Home({ me, projects }: { me: any; projects: any[] }) {
       </Head>
       <main className="flex flex-col">
         <TopBar />
-        <div className="hero md:min-h-screen bg-base-200">
+        <div className="hero md:min-h-screen bg-base-200 mb-7">
           <BackgroundImage />
           <div className="hero-content py-20 lg:py-0 !w-screen max-w-2xl">
             <CodeWindow
@@ -84,11 +92,8 @@ export default function Home({ me, projects }: { me: any; projects: any[] }) {
             />
           </div>
         </div>
-        <div className="bottom-5 w-full text-center hidden md:absolute">
-          <button
-            className="btn btn-circle btn-outline opacity-95 text-zinc-400 hover:text-zinc-100 hover:bg-transparent"
-            onClick={scrollDown}
-          >
+        <div className="bottom-5 w-full text-center absolute invisible md:visible z-10">
+          <button className="btn btn-circle btn-ghost" onClick={scrollDown}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -105,20 +110,15 @@ export default function Home({ me, projects }: { me: any; projects: any[] }) {
             </svg>
           </button>
         </div>
-        <div
-          id="projects"
-          // className="flex flex-row flex-wrap justify-center xl:w-2/3 lg:py-3"
-          className="grid grid-cols-1 md:grid-cols-2 md:py-3 w-full max-w-5xl grid-flow-row-dense mx-auto"
-        >
-          {projects.map((project) => (
-            <div key={project.id} className="p-3">
-              <CodeWindow
-                object={project}
-                keysByOrder={keysByOrderForProjects}
-              />
-            </div>
-          ))}
-        </div>
+        <div id="projects" />
+        {sections.map((section) => (
+          <Section
+            key={section.title}
+            title={section.title}
+            description={section.description}
+            projects={section.projects}
+          />
+        ))}
         <Footer />
       </main>
     </>
