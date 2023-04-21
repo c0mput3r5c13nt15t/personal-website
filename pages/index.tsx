@@ -1,11 +1,12 @@
 import Head from "next/head";
-import TopBar from "@/components/topBar";
 import CodeWindow from "@/components/codeWindow";
-import BackgroundImage from "@/components/backgroundImage";
+import Image from "next/image";
 import Footer from "@/components/footer";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Section from "@/components/section";
+import useTheme from "@/lib/hooks/useTheme";
+import Link from "next/link";
 
 export const getStaticProps = async () => {
   async function getProjects(section: string): Promise<any[]> {
@@ -14,7 +15,7 @@ export const getStaticProps = async () => {
     const projects: any[] = [];
     querySnapshot.docs.map((doc) => {
       const data = doc.data();
-      const new_project = { ...data };
+      const new_project = { id: doc.id, ...data };
       projects.push(new_project);
     });
     return projects;
@@ -50,29 +51,47 @@ export const getStaticProps = async () => {
         },
       ],
     },
-    revalidate: 60 * 60, // Every hours
+    revalidate: parseInt(process.env.REVALIDATE_SECONDS || "3600", 10),
   };
 };
 
 export default function Home({ me, sections }: { me: any; sections: any[] }) {
+  const { theme, toggleTheme } = useTheme();
   const keysByOrderForMe = [
     "name",
     "age",
-    "academics",
+    "education",
     "emoji-representation",
     "fields",
     "languages",
     "contact",
+    "German",
+    "English",
+    "French",
   ];
 
   function scrollDown() {
     document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" });
   }
 
+  async function shareUrl() {
+    try {
+      const shareData = {
+        title: "Paul Maier (c0mput3r5c13nt15t)",
+        text: "Hi there, I am Paul Maier and this is my personal website.",
+        url: "https://personal-website-c0mput3r5c13nt15t.vercel.app/",
+      };
+
+      await navigator.share(shareData);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     <>
       <Head>
-        <title>Paul Maier (c0mput3r5c13nt15t)</title>
+        <title>Paul Maier (C0mput3r5c13nt15t)</title>
         <meta
           name="description"
           content="Hi there, I am Paul Maier and this is my personal website."
@@ -81,9 +100,66 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col">
-        <TopBar />
+        <button
+          className="btn btn-circle btn-ghost absolute  top-3 left-3 z-10"
+          onClick={shareUrl}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              fillRule="evenodd"
+              d="M15.75 4.5a3 3 0 11.825 2.066l-8.421 4.679a3.002 3.002 0 010 1.51l8.421 4.679a3 3 0 11-.729 1.31l-8.421-4.678a3 3 0 110-4.132l8.421-4.679a3 3 0 01-.096-.755z"
+              clipRule="evenodd"
+            />
+          </svg>
+        </button>
+        <button
+          className="btn btn-circle btn-ghost top-3 right-3 absolute z-10"
+          onClick={toggleTheme}
+        >
+          {theme === "dark" ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6"
+            >
+              <path
+                fillRule="evenodd"
+                d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                clipRule="evenodd"
+              />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              className="w-6 h-6"
+            >
+              <path d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+            </svg>
+          )}
+        </button>
         <div className="hero md:min-h-screen bg-base-200 mb-7">
-          <BackgroundImage />
+          <div style={{ width: "100%", height: "100%", position: "relative" }}>
+            <Image
+              alt="Mountains"
+              loading="eager"
+              src={"/bg-" + theme + ".jpg"}
+              fill={true}
+              sizes="100vw"
+              quality={100}
+              priority={true}
+              placeholder="blur"
+              blurDataURL={"/bg-" + theme + "-blur.webp"}
+              style={{ objectFit: "cover" }}
+            />
+          </div>
           <div className="hero-content py-20 lg:py-0 !w-screen max-w-2xl">
             <CodeWindow
               object={me}

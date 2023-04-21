@@ -1,5 +1,3 @@
-import { db } from "@/lib/firebase";
-import { query, collection, getDocs } from "firebase/firestore";
 import CodeWindow from "./codeWindow";
 
 export default function Section({
@@ -12,7 +10,6 @@ export default function Section({
   projects: any[];
 }) {
   const keysByOrderForProjects = [
-    "id",
     "name",
     "descr",
     "description",
@@ -23,15 +20,15 @@ export default function Section({
     "github",
     "technologies",
   ];
-  const hiddenKeys = ["large"];
+  const hiddenKeys = ["id", "large"];
 
   return (
     <div className="py-4 w-full max-w-5xl mx-auto">
-      <h1 className="text-4xl md:text-5xl font-bold text-center md:text-left md:col-span-2 px-3">
+      <h1 className="text-3xl md:text-5xl font-bold text-center md:text-left md:col-span-2 px-3 pb-2">
         {title}
       </h1>
       {description && (
-        <p className="text-xl md:text-2xl text-center md:text-left md:col-span-2 px-3">
+        <p className="text-md md:text-2xl text-center md:text-left md:col-span-2 px-3">
           {description}
         </p>
       )}

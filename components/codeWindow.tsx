@@ -77,7 +77,7 @@ export default function CodeWindow({
       }
       return (
         <>
-          <span className="value-string inline-block break-before-all whitespace-normal ">
+          <span className="value-string inline-block break-before-all whitespace-normal">
             &quot;{value}&quot;<span className="white">,</span>
           </span>
         </>

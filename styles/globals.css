@@ -7,6 +7,10 @@ html {
   scroll-behavior: smooth !important;
 }
 
+.mockup-code pre {
+  @apply !p-0;
+}
+
 .mockup-code::-webkit-scrollbar {
   width: 1rem;
 }
@@ -61,5 +65,5 @@ html {
 }
 
 .text-size {
-  @apply text-xs sm:text-sm md:text-base lg:text-lg;
+  @apply text-sm sm:text-base md:text-lg lg:text-xl;
 }
