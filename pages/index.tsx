@@ -91,7 +91,7 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
   return (
     <>
       <Head>
-        <title>Paul Maier (C0mput3r5c13nt15t)</title>
+        <title>Paul Maier (c0mput3r5c13nt15t)</title>
         <meta
           name="description"
           content="Hi there, I am Paul Maier and this is my personal website."
