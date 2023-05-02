@@ -154,7 +154,6 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
             <Image
               alt="Mountains"
-              loading="eager"
               src={"/bg-" + (isDarkMode ? "dark" : "light") + ".jpg"}
               fill={true}
               sizes="100vw"
