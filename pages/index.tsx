@@ -5,7 +5,8 @@ import Footer from "@/components/footer";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Section from "@/components/section";
-import useTheme from "@/lib/hooks/useTheme";
+import { useDarkMode } from "usehooks-ts";
+import { useEffect } from "react";
 
 export const getStaticProps = async () => {
   async function getProjects(section: string): Promise<any[]> {
@@ -55,7 +56,7 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ me, sections }: { me: any; sections: any[] }) {
-  const { theme, toggleTheme } = useTheme();
+  const { isDarkMode, toggle } = useDarkMode();
   const keysByOrderForMe = [
     "name",
     "age",
@@ -86,6 +87,11 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
       console.error(err);
     }
   }
+
+  useEffect(() => {
+    const body = document.body;
+    body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
 
   return (
     <>
@@ -118,9 +124,9 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         </button>
         <button
           className="btn btn-circle btn-ghost top-3 right-3 absolute z-10"
-          onClick={toggleTheme}
+          onClick={toggle}
         >
-          {theme === "dark" ? (
+          {isDarkMode ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
@@ -149,13 +155,13 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
             <Image
               alt="Mountains"
               loading="eager"
-              src={"/bg-" + theme + ".jpg"}
+              src={"/bg-" + (isDarkMode ? "dark" : "light") + ".jpg"}
               fill={true}
               sizes="100vw"
               quality={100}
               priority={true}
               placeholder="blur"
-              blurDataURL={"/bg-" + theme + "-blur.webp"}
+              blurDataURL={"/bg-light-blur.webp"}
               style={{ objectFit: "cover" }}
             />
           </div>
