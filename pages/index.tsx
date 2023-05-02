@@ -6,7 +6,6 @@ import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Section from "@/components/section";
 import useTheme from "@/lib/hooks/useTheme";
-import Link from "next/link";
 
 export const getStaticProps = async () => {
   async function getProjects(section: string): Promise<any[]> {

@@ -30,6 +30,52 @@ export default function CodeWindow({
     }
   }
 
+  const abbreviations: { [key: string]: string } = {
+    Jugend: "Ju",
+    forscht: "Fo",
+    Bundeswettbewerb: "Bw",
+    Informatik: "Inf",
+    Chemie: "Ch",
+    Schülerstudium: "SchüStu",
+    Wintersemester: "WS",
+    AI: "AI",
+    "2022/23": "2223",
+  };
+
+  function abbreviate(name: string) {
+    if (name.indexOf(" ") >= 0) {
+      const words = name.split(" ");
+      let abbreviation = "";
+      for (let i = 0; i < words.length; i++) {
+        if (abbreviations[words[i]]) {
+          abbreviation += abbreviations[words[i]];
+          continue;
+        }
+
+        if (words[i][0] === words[i][0].toLowerCase()) {
+          const lastChar = abbreviation.slice(-1);
+          if (i === 0 || (lastChar && lastChar == lastChar.toUpperCase())) {
+            abbreviation += words[i].toLowerCase();
+            continue;
+          }
+          abbreviation += words[i][0].toUpperCase() + words[i].slice(1);
+          continue;
+        }
+
+        abbreviation += words[i][0];
+      }
+
+      // if the abbreviation is all uppercase, make it lowercase
+      if (abbreviation === abbreviation.toUpperCase()) {
+        return abbreviation.toLowerCase();
+      }
+
+      return abbreviation;
+    } else {
+      return name.toLowerCase();
+    }
+  }
+
   function displayValue(value: any): ReactNode {
     if (typeof value === "string") {
       if (value.startsWith("http://") || value.startsWith("https://")) {
@@ -152,7 +198,7 @@ export default function CodeWindow({
           <pre className="brackets -ml-4">
             <span className="const">const</span>{" "}
             <span className="variable">
-              {variableName || object.name.replaceAll(" ", "_")}
+              {variableName || abbreviate(object.name)}
             </span>{" "}
             <span className="white">=</span> {"{"}
           </pre>
