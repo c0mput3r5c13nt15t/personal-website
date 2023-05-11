@@ -166,6 +166,7 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
                 alt="Mountains"
                 src={"/bg-dark.jpg"}
                 fill={true}
+                priority={true}
                 sizes="100vw"
                 placeholder="blur"
                 blurDataURL={"/bg-dark-blur.webp"}
@@ -176,6 +177,7 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
                 alt="Mountains"
                 src={"/bg-light.jpg"}
                 fill={true}
+                priority={true}
                 sizes="100vw"
                 placeholder="blur"
                 blurDataURL={"/bg-light-blur.webp"}
