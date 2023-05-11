@@ -5,8 +5,7 @@ import Footer from "@/components/footer";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 import { db } from "@/lib/firebase";
 import Section from "@/components/section";
-import { useDarkMode } from "usehooks-ts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const getStaticProps = async () => {
   async function getProjects(section: string): Promise<any[]> {
@@ -56,7 +55,7 @@ export const getStaticProps = async () => {
 };
 
 export default function Home({ me, sections }: { me: any; sections: any[] }) {
-  const { isDarkMode, toggle } = useDarkMode();
+  const [isDarkMode, setIsDarkMode] = useState(false);
   const keysByOrderForMe = [
     "name",
     "age",
@@ -89,8 +88,14 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
   }
 
   useEffect(() => {
-    const body = document.body;
-    body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+    if (localStorage.getItem("darkMode") == "true") {
+      setIsDarkMode(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+    localStorage.setItem("darkMode", isDarkMode ? "true" : "false");
   }, [isDarkMode]);
 
   return (
@@ -107,6 +112,7 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
       <main className="flex flex-col">
         <button
           className="btn btn-circle btn-ghost absolute  top-3 left-3 z-10"
+          aria-label="Share this website"
           onClick={shareUrl}
         >
           <svg
@@ -124,7 +130,10 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         </button>
         <button
           className="btn btn-circle btn-ghost top-3 right-3 absolute z-10"
-          onClick={toggle}
+          aria-label="Toggle dark mode"
+          onClick={() => {
+            setIsDarkMode(!isDarkMode);
+          }}
         >
           {isDarkMode ? (
             <svg
@@ -152,17 +161,27 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         </button>
         <div className="hero md:min-h-screen bg-base-200 mb-7">
           <div style={{ width: "100%", height: "100%", position: "relative" }}>
-            <Image
-              alt="Mountains"
-              src={"/bg-" + (isDarkMode ? "dark" : "light") + ".jpg"}
-              fill={true}
-              sizes="100vw"
-              quality={100}
-              priority={true}
-              placeholder="blur"
-              blurDataURL={"/bg-light-blur.webp"}
-              style={{ objectFit: "cover" }}
-            />
+            {isDarkMode ? (
+              <Image
+                alt="Mountains"
+                src={"/bg-dark.jpg"}
+                fill={true}
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={"/bg-dark-blur.webp"}
+                style={{ objectFit: "cover" }}
+              />
+            ) : (
+              <Image
+                alt="Mountains"
+                src={"/bg-light.jpg"}
+                fill={true}
+                sizes="100vw"
+                placeholder="blur"
+                blurDataURL={"/bg-light-blur.webp"}
+                style={{ objectFit: "cover" }}
+              />
+            )}
           </div>
           <div className="hero-content py-20 lg:py-0 !w-screen max-w-2xl">
             <CodeWindow
