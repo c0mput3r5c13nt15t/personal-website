@@ -41,30 +41,14 @@ export default function Landing() {
           <rect x="0" y="0" width="900" height="600" fill="transparent"></rect>
           <defs>
             <linearGradient id="grad1_0" x1="33.3%" y1="0%" x2="100%" y2="100%">
-              <stop
-                offset="20%"
-                stop-color="transparent"
-                stop-opacity="1"
-              ></stop>
-              <stop
-                offset="80%"
-                stop-color="transparent"
-                stop-opacity="1"
-              ></stop>
+              <stop offset="20%" stopColor="transparent" stopOpacity="1"></stop>
+              <stop offset="80%" stopColor="transparent" stopOpacity="1"></stop>
             </linearGradient>
           </defs>
           <defs>
             <linearGradient id="grad2_0" x1="0%" y1="0%" x2="66.7%" y2="100%">
-              <stop
-                offset="20%"
-                stop-color="transparent"
-                stop-opacity="1"
-              ></stop>
-              <stop
-                offset="80%"
-                stop-color="transparent"
-                stop-opacity="1"
-              ></stop>
+              <stop offset="20%" stopColor="transparent" stopOpacity="1"></stop>
+              <stop offset="80%" stopColor="transparent" stopOpacity="1"></stop>
             </linearGradient>
           </defs>
           <g transform="translate(900, 0)">
@@ -81,8 +65,8 @@ export default function Landing() {
           </g>
         </svg>
       </div>
-      <div className="hero min-h-screen max-w-3xl">
-        <div className="hero-content flex-col lg:flex-row gap-14">
+      <div className="hero min-h-screen">
+        <div className="hero-content w-full max-w-3xl flex-col lg:flex-row gap-14">
           <div className="avatar">
             <div className="w-40 lg:w-60 rounded-full shadow-lg">
               <Image

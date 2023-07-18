@@ -1,10 +1,6 @@
-import HeroiconsWrapper from "./heroiconsWrapper";
+import HeroiconsWrapper from "../heroiconsWrapper";
 
-export default function Carousel({
-  id
-}: {
-  id?: string;
-}): JSX.Element {
+export default function Work(): JSX.Element {
   const slides = [
     {
       title: "Slide 1",
@@ -21,7 +17,7 @@ export default function Carousel({
   ];
 
   return (
-    <section id={id} className="carousel w-full h-screen">
+    <section id="work" className="carousel w-full min-h-screen">
       {slides.map((item, index) => (
         <article
           data-theme={item.theme}
@@ -29,14 +25,30 @@ export default function Carousel({
           key={index}
           className="carousel-item relative w-full"
         >
-          <div className="w-full h-full flex justify-center items-center py-10">
+          <div className="w-full h-full flex justify-center lg:items-center p-2 bg-base-200">
             <div
-              className="card w-96 bg-base-100 shadow-xl"
+              className="card lg:card-side w-full max-w-3xl bg-base-100 shadow-xl"
               data-theme={item.theme}
             >
+              <figure className="max-h-40 lg:max-h-full">
+                <img
+                  className="w-full object-cover"
+                  src="https://images.unsplash.com/photo-1689164750404-f9db7b564e60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
+                  alt="Album"
+                />
+              </figure>
               <div className="card-body">
                 <h2 className="card-title">{item.title}</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div className="flex flex-row gap-1">
+                  <div className="badge badge-primary">primary</div>
+                  <div className="badge badge-secondary">secondary</div>
+                  <div className="badge badge-accent">accent</div>
+                </div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+                  voluptatum, quibusdam, voluptate, quia voluptas quod
+                  voluptatem quos dolorum quae voluptatibus quidem. Quisquam
+                </p>
                 <div className="card-actions justify-end">
                   <button className="btn btn-primary">Buy Now</button>
                 </div>
@@ -48,7 +60,7 @@ export default function Carousel({
             {/* Button left */}
             <a
               href={`#slide${index - 1}`}
-              className={`btn btn-circle btn-ghost hidden sm:flex ${
+              className={`btn btn-circle btn-ghost hidden lg:flex ${
                 index === 0 && "invisible"
               }`}
             >
@@ -63,7 +75,7 @@ export default function Carousel({
             {/* Button right */}
             <a
               href={`#slide${index + 1}`}
-              className={`btn btn-circle btn-ghost hidden sm:flex  ${
+              className={`btn btn-circle btn-ghost hidden lg:flex  ${
                 index === slides.length - 1 ? "invisible" : ""
               }`}
             >

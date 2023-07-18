@@ -192,7 +192,7 @@ export default function CodeWindow({
   }
 
   return (
-    <div className="mockup-code bg-zinc-800 text-zinc-600 bg-opacity-95 text-size w-full h-full">
+    <div className="mockup-code bg-zinc-800 text-zinc-600 bg-opacity-95 w-full h-full">
       <div className="mx-4">
         <SimpleBar>
           <pre className="brackets -ml-4">

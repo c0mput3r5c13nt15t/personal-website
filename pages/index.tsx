@@ -6,7 +6,7 @@ import Section from "@/components/section";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navBar";
 import Landing from "@/components/sections/landing";
-import Carousel from "@/components/carousel";
+import Work from "@/components/sections/work";
 import About from "@/components/sections/about";
 import Contact from "@/components/sections/contact";
 
@@ -97,8 +97,8 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
       <main className="flex flex-col w-full">
         <Navbar />
         <Landing />
-        <About />
-        <Carousel id="work" />
+        <About me={me} />
+        <Work />
         <Contact />
         {/* {sections.map((section) => (
           <Section

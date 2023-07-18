@@ -1,35 +1,30 @@
-import Image from "next/image";
+import { useState } from "react";
+import CodeWindow from "../codeWindow";
+import { db } from "@/lib/firebase";
+import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 
-export default function About() {
+export default function About({ me }: { me: any }) {
+  const keysByOrderForMe = [
+    "name",
+    "age",
+    "education",
+    "emoji-representation",
+    "fields",
+    "languages",
+    "contact",
+    "German",
+    "English",
+    "French",
+  ];
+
   return (
-    <section id="about" className="section bg-secondary">
-      <div className="card w-full max-w-3xl bg-base-100 shadow-xl">
-        <div className="card-body">
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
-            </div>
-          </div>
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
-            </div>
-          </div>
-          <div className="collapse collapse-arrow bg-base-200">
-            <input type="radio" name="my-accordion-2" />
-            <div className="collapse-title text-xl font-medium">
-              Click to open this one and close others
-            </div>
-            <div className="collapse-content">
-              <p>hello</p>
+    <section id="about" className="section">
+      <div className="hero min-h-screen">
+        <div className="hero-content w-full max-w-3xl flex-col lg:flex-row-reverse">
+          <div className="grid grid-cols-2 w-full">
+            <div>Bla</div>
+            <div>
+              <CodeWindow object={me} keysByOrder={keysByOrderForMe} />
             </div>
           </div>
         </div>
