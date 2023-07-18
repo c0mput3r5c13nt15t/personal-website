@@ -61,6 +61,18 @@ module.exports = {
           "base-100": "#111827",
         },
       },
+      {
+        linkedin: {
+          primary: "#0077b5",
+          neutral: "#ffffff",
+        },
+      },
+      {
+        github: {
+          primary: "#24292e",
+          neutral: "#ffffff",
+        },
+      },
       "light",
       "dark",
       "cupcake",
