@@ -21,12 +21,7 @@ export default function About({ me }: { me: any }) {
     <section id="about" className="section">
       <div className="hero min-h-screen">
         <div className="hero-content w-full max-w-3xl flex-col lg:flex-row-reverse">
-          <div className="grid grid-cols-2 w-full">
-            <div>Bla</div>
-            <div>
-              <CodeWindow object={me} keysByOrder={keysByOrderForMe} />
-            </div>
-          </div>
+          <div>Bla</div>
         </div>
       </div>
     </section>

@@ -37,6 +37,30 @@ module.exports = {
   },
   daisyui: {
     themes: [
+      {
+        diribitio: {
+          primary: "#6411D9",
+          accent: "#752BDF",
+          neutral: "#ffffff",
+          "base-100": "#FFFFFF",
+        },
+      },
+      {
+        birklehof: {
+          primary: "#004e47",
+          accent: "#A5C12A",
+          neutral: "#ffffff",
+          "base-100": "#FFFFFF",
+        },
+      },
+      {
+        astropi: {
+          primary: "#FEB400",
+          accent: "#0CCBFF",
+          neutral: "#ffffff",
+          "base-100": "#111827",
+        },
+      },
       "light",
       "dark",
       "cupcake",

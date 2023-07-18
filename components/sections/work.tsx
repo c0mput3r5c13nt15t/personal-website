@@ -1,18 +1,26 @@
 import HeroiconsWrapper from "../heroiconsWrapper";
+import Image from "next/image";
 
 export default function Work(): JSX.Element {
   const slides = [
     {
-      title: "Slide 1",
-      theme: "valentine",
+      title: "Diribitio",
+      tags: ["Angular", "Laravel", "Python", "Docker"],
+      theme: "diribitio",
+      github: "https://github.com/diribitio/diribitio",
     },
     {
-      title: "Slide 2",
-      theme: "dark",
+      title: "Birklehof IT",
+      tags: ["React", "Next.js", "TailwindCSS", "TypeScript"],
+      theme: "birklehof",
+      image: "/assets/birklehof.jpg",
+      github: "https://github.com/Birklehof",
     },
     {
-      title: "Slide 3",
-      theme: "cyberpunk",
+      title: "Astro Pi",
+      tags: ["Python", "Machine Learning", "Raspberry Pi"],
+      theme: "astropi",
+      github: "https://github.com/cloudic-ai",
     },
   ];
 
@@ -25,24 +33,32 @@ export default function Work(): JSX.Element {
           key={index}
           className="carousel-item relative w-full"
         >
-          <div className="w-full h-full flex justify-center lg:items-center p-2 bg-base-200">
+          <div className="w-full h-full flex justify-center items-center p-2 bg-base-200">
             <div
-              className="card lg:card-side w-full max-w-3xl bg-base-100 shadow-xl"
+              className="card lg:card-side w-full max-w-3xl bg-base-100 shadow-xl h-fit"
               data-theme={item.theme}
             >
-              <figure className="max-h-40 lg:max-h-full">
-                <img
-                  className="w-full object-cover"
-                  src="https://images.unsplash.com/photo-1689164750404-f9db7b564e60?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80"
-                  alt="Album"
-                />
-              </figure>
+              {item.image && (
+                <figure className="bg-red-500 lg:max-w-xs max-h-40 lg:max-h-max">
+                  <Image
+                    className="w-full object-cover h-full !relative"
+                    src={item.image}
+                    alt="Album"
+                    fill={true}
+                  />
+                </figure>
+              )}
               <div className="card-body">
                 <h2 className="card-title">{item.title}</h2>
-                <div className="flex flex-row gap-1">
-                  <div className="badge badge-primary">primary</div>
-                  <div className="badge badge-secondary">secondary</div>
-                  <div className="badge badge-accent">accent</div>
+                <div className="flex flex-row gap-1 flex-wrap">
+                  {item.tags.map((tag, index) => (
+                    <div
+                      key={index}
+                      className="badge badge-outline badge-accent"
+                    >
+                      {tag}
+                    </div>
+                  ))}
                 </div>
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
@@ -50,7 +66,19 @@ export default function Work(): JSX.Element {
                   voluptatem quos dolorum quae voluptatibus quidem. Quisquam
                 </p>
                 <div className="card-actions justify-end">
-                  <button className="btn btn-primary">Buy Now</button>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => window.open(item.github, "_blank")}
+                  >
+                    View on GitHub{" "}
+                    <HeroiconsWrapper className="h-5 w-5">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      />
+                    </HeroiconsWrapper>
+                  </button>
                 </div>
               </div>
             </div>

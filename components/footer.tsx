@@ -7,7 +7,7 @@ export default function Footer() {
     <>
       <footer
         id="footer"
-        className="footer footer-center p-4 bg-base-300 text-base-content text-xl md:text-sm"
+        className="footer footer-center p-4 bg-base-300 text-base-content text-md md:text-sm"
       >
         <div>
           <p>Copyright © {getYear()} - Paul Maier</p>
