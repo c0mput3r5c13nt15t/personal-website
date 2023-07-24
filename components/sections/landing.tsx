@@ -60,7 +60,7 @@ export default function Landing() {
             <div className="w-40 lg:w-60 rounded-full shadow-lg">
               <Image
                 alt="Profile picture"
-                src={"/pp.jpg"}
+                src={"/assets/pp.jpg"}
                 width={400}
                 height={400}
                 style={{ objectFit: "contain" }}
