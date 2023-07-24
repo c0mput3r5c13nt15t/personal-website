@@ -18,6 +18,7 @@ export default function Contact() {
           className="btn btn-square btn-lg btn-ghost"
           href={"mailto:" + contact.mail}
           target="_blank"
+          rel="noreferrer"
         >
           <HeroiconsWrapper className="h-7 w-7">
             <path
@@ -32,6 +33,7 @@ export default function Contact() {
           className="btn btn-square btn-lg btn-ghost"
           href={contact.gitHub}
           target="_blank"
+          rel="noreferrer"
         >
           <svg
             className="h-7 w-7"
@@ -46,6 +48,7 @@ export default function Contact() {
           className="btn btn-square btn-lg btn-ghost"
           href={contact.linkedin}
           target="_blank"
+          rel="noreferrer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

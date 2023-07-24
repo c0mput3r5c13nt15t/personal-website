@@ -4,14 +4,14 @@ import { useEffect, useState } from "react";
 export default function Landing() {
   const isDarkMode = false;
 
-  const iam = [
+  const [iam, setIam] = useState<string[]>([
     "Paul Maier",
     "a student",
     "a developer",
     "a designer",
     "a maker",
     "a team player",
-  ];
+  ]);
 
   useEffect(() => {
     let test = 0;
@@ -23,7 +23,7 @@ export default function Landing() {
         document.getElementById("typingContent")!.innerHTML =
           iam[test % iam.length];
       });
-  }, []);
+  }, [iam]);
 
   function scrollDown() {
     document.getElementById("bottom")?.scrollIntoView({ behavior: "smooth" });
