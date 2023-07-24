@@ -29,14 +29,34 @@ module.exports = {
             visibility: "hidden",
           },
         },
+        hover: {
+          "0%": {
+            transform: "translateY(0px)",
+          },
+          "50%": {
+            transform: "translateY(-10px)",
+          },
+          "100%": {
+            transform: "translateY(0px)",
+          },
+        },
       },
       animation: {
         typing: "typing 4s steps(20) infinite",
+        hover: "hover 2s infinite ease-in-out",
       },
     },
   },
   daisyui: {
     themes: [
+      {
+        light: {
+          primary: "#57d130",
+          secondary: "#23873C",
+          accent: "#D20F44",
+          "base-100": "#ffffff",
+        },
+      },
       {
         diribitio: {
           primary: "#6411D9",
@@ -73,7 +93,6 @@ module.exports = {
           neutral: "#ffffff",
         },
       },
-      "light",
       "dark",
       "cupcake",
       "bumblebee",
