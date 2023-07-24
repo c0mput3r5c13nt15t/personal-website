@@ -59,18 +59,6 @@ export const getStaticProps = async () => {
 
 export default function Home({ me, sections }: { me: any; sections: any[] }) {
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const keysByOrderForMe = [
-    "name",
-    "age",
-    "education",
-    "emoji-representation",
-    "fields",
-    "languages",
-    "contact",
-    "German",
-    "English",
-    "French",
-  ];
 
   useEffect(() => {
     if (localStorage.getItem("darkMode") == "true") {
@@ -95,7 +83,10 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col w-full">
-        <Navbar />
+        <Navbar 
+          isDarkMode={isDarkMode}
+          setIsDarkMode={setIsDarkMode}
+        />
         <Landing />
         <About me={me} />
         <Work />

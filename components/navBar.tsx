@@ -1,8 +1,12 @@
 import HeroiconsWrapper from "./heroiconsWrapper";
 
-export default function Navbar() {
-  const isDarkMode = false;
-
+export default function Navbar({
+  isDarkMode,
+  setIsDarkMode,
+}: {
+  isDarkMode: boolean;
+  setIsDarkMode: any;
+}) {
   async function shareUrl() {
     try {
       const shareData = {
@@ -71,7 +75,10 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-square">
+          <button
+            className="btn btn-ghost btn-square"
+            onClick={() => setIsDarkMode(!isDarkMode)}
+          >
             {isDarkMode ? (
               <HeroiconsWrapper>
                 <path

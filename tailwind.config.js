@@ -58,6 +58,14 @@ module.exports = {
         },
       },
       {
+        dark: {
+          primary: "#57d130",
+          secondary: "#23873C",
+          accent: "#D20F44",
+          "base-100": "#080808",
+        },
+      },
+      {
         diribitio: {
           primary: "#6411D9",
           accent: "#752BDF",
@@ -93,7 +101,6 @@ module.exports = {
           neutral: "#ffffff",
         },
       },
-      "dark",
       "cupcake",
       "bumblebee",
       "emerald",
