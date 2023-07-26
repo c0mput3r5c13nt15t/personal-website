@@ -34,24 +34,12 @@ export default function Landing() {
       <div className="text-accent absolute h-full w-full overflow-hidden">
         <Image
           alt="Background"
-          src={"/assets/bg-landing.svg"}
+          src={"/assets/landing_adobe_express.svg"}
           layout="fill"
           objectFit="cover"
           objectPosition="center"
-        />
-        <Image
-          alt="Drone"
-          src={"/assets/drone.svg"}
-          width={100}
-          height={100}
-          className="absolute animate-hover top-3/4 right-96"
-        />
-        <Image
-          alt="Drone"
-          src={"/assets/drone.svg"}
-          width={100}
-          height={100}
-          className="absolute animate-hover top-1/2 left-60"
+          quality={100}
+          style={{ objectFit: "cover", objectPosition: "right center" }}
         />
       </div>
       <div className="hero min-h-screen">
