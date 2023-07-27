@@ -16,7 +16,7 @@ export default function About({ me }: { me: any }) {
 
   return (
     <section className="section">
-      <div className="hero bg-base-100 items-start py-28">
+      <div className="hero bg-base-100 items-start pb-20 pt-10">
         <div className="hero-content w-full max-w-3xl lg:flex-row-reverse items-start">
           <div className="flex flex-col gap-3 w-full">
             <div className="tabs w-full justify-start">

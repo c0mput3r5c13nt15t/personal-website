@@ -40,10 +40,10 @@ export default function Contact() {
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <div className="z-10">
-        <h1 className="text-4xl font-bold">
+        <h1 className="text-4xl font-bold mb-2 w-full text-center">
           Find me <span className="text-primary">here</span>
         </h1>
-        <div className="flex flex-row gap-3 flex-wrap w-full justify-center">
+        <div className="flex flex-row gap-5 flex-wrap w-full justify-center">
           <a
             aria-label="Mail"
             className="btn btn-square btn-lg btn-ghost"
