@@ -21,8 +21,6 @@ export default function useRemoteConfig<CollectionType>(
         .then(() => {
           const newValue = getString(remoteConfig, name);
 
-          console.log(newValue);
-
           if (newValue) {
             // If collection type is string
             if (typeof defaultValue === "string" || typeof defaultValue === "number") {

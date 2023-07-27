@@ -62,7 +62,7 @@ module.exports = {
           primary: "#57d130",
           secondary: "#23873C",
           accent: "#D20F44",
-          "base-100": "#080808",
+          "base-100": "#000000",
           "base-content": "#ffffff",
         },
       },
@@ -131,5 +131,5 @@ module.exports = {
       "winter",
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [require("daisyui"), require('@tailwindcss/line-clamp'),],
 };

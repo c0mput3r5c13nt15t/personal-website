@@ -14,16 +14,25 @@ body {
 .my-glass {
   background: rgba(0, 0, 0, 0.47);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5.1px);
   -webkit-backdrop-filter: blur(5.1px);
 }
 
+.bottom-wave {
+  @apply -scale-y-[20%] translate-y-[40%];
+}
+
+.top-wave {
+  @apply scale-y-[20%] -translate-y-[40%]
+}
+
+[data-theme="dark"] .themed-svg {
+  @apply filter brightness-0;
+}
+
 .custom-shape-divider-bottom-1690479286 {
-  position: absolute;
-  bottom: 0;
-  left: 0;
   width: 100%;
+  min-width: 1000px;
   overflow: hidden;
   line-height: 0;
 }
@@ -36,7 +45,25 @@ body {
 }
 
 .custom-shape-divider-bottom-1690479286 .shape-fill {
-  @apply fill-base-100
+  @apply fill-base-100;
+}
+
+.custom-shape-divider-top-1690488406 {
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1690488406 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 150px;
+  transform: rotateY(180deg);
+}
+
+.custom-shape-divider-top-1690488406 .shape-fill {
+  fill: #ffffff;
 }
 
 .section {

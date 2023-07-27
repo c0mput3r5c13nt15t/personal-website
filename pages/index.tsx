@@ -89,7 +89,7 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         />
         <Landing />
         <About me={me} />
-        <Work />
+        {/* <Work /> */}
         <Contact />
         {/* {sections.map((section) => (
           <Section

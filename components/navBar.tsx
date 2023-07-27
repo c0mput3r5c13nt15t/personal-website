@@ -7,26 +7,12 @@ export default function Navbar({
   isDarkMode: boolean;
   setIsDarkMode: any;
 }) {
-  async function shareUrl() {
-    try {
-      const shareData = {
-        title: "Paul Maier (C0mput3r5c13nt15t)",
-        text: "Hi there, I am Paul Maier and this is my personal website.",
-        url: "https://personal-website-c0mput3r5c13nt15t.vercel.app/",
-      };
-
-      await navigator.share(shareData);
-    } catch (err) {
-      console.error(err);
-    }
-  }
-
   return (
     <>
       <nav className="px-2 pt-2 w-full max-w-3xl fixed left-1/2 -translate-x-1/2 z-50">
         <div
           data-theme="dark"
-          className="text-white navbar my-glass rounded-none md:rounded-box shadow-md"
+          className="text-white navbar my-glass rounded-none md:rounded-box shadow-lg dark:shadow-none"
         >
           <div className="navbar-start">
             <div className="dropdown">
@@ -53,9 +39,9 @@ export default function Navbar({
                 <li>
                   <a href="#about">About</a>
                 </li>
-                <li>
+                {/* <li>
                   <a href="#work">Work</a>
-                </li>
+                </li> */}
                 <li>
                   <a href="#contact">Contact</a>
                 </li>
@@ -70,9 +56,9 @@ export default function Navbar({
               <li>
                 <a href="#about">About</a>
               </li>
-              <li>
+              {/* <li>
                 <a href="#work">Work</a>
-              </li>
+              </li> */}
               <li>
                 <a href="#contact">Contact</a>
               </li>
