@@ -52,15 +52,15 @@ export default function Navbar({
             </a>
           </div>
           <div className="navbar-center hidden md:flex">
-            <ul className="menu menu-horizontal px-1">
+            <ul className="flex flex-row gap-3 px-1">
               <li>
-                <a href="#about">About</a>
+                <a className="btn btn-sm btn-ghost font-normal capitalize" href="#about">About</a>
               </li>
               {/* <li>
                 <a href="#work">Work</a>
               </li> */}
               <li>
-                <a href="#contact">Contact</a>
+                <a className="btn btn-sm btn-ghost font-normal capitalize" href="#contact">Contact</a>
               </li>
             </ul>
           </div>

@@ -12,7 +12,7 @@ export default function Contact() {
     <section id="contact" className="section relative h-screen">
       <Image
         alt="Background"
-        src={"/assets/bg-landing.svg"}
+        src={"/assets/bg-contacts.svg"}
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}
@@ -20,14 +20,14 @@ export default function Contact() {
       <Image
         alt="Blob"
         className="themed-svg"
-        src={"/assets/blob-haikei.svg"}
+        src={"/assets/blob.svg"}
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Image
         alt="Background"
-        className="top-wave themed-svg"
+        className="top-wave themed-svg -scale-x-100"
         src={"/assets/wave.svg"}
         fill={true}
         style={{ objectFit: "cover", objectPosition: "center" }}

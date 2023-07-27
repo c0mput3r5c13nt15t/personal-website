@@ -30,42 +30,6 @@ body {
   @apply filter brightness-0;
 }
 
-.custom-shape-divider-bottom-1690479286 {
-  width: 100%;
-  min-width: 1000px;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-bottom-1690479286 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 132px;
-}
-
-.custom-shape-divider-bottom-1690479286 .shape-fill {
-  @apply fill-base-100;
-}
-
-.custom-shape-divider-top-1690488406 {
-  width: 100%;
-  overflow: hidden;
-  line-height: 0;
-}
-
-.custom-shape-divider-top-1690488406 svg {
-  position: relative;
-  display: block;
-  width: calc(100% + 1.3px);
-  height: 150px;
-  transform: rotateY(180deg);
-}
-
-.custom-shape-divider-top-1690488406 .shape-fill {
-  fill: #ffffff;
-}
-
 .section {
   @apply w-full flex justify-center items-center bg-base-200;
 }
