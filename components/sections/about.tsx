@@ -19,7 +19,7 @@ export default function About({ me }: { me: any }) {
 
   return (
     <section id="about" className="section">
-      <div className="hero min-h-screen bg-[#259542]">
+      <div className="hero min-h-screen bg-base-100">
         <div className="hero-content w-full max-w-3xl flex-col lg:flex-row-reverse">
           <div>Bla</div>
         </div>

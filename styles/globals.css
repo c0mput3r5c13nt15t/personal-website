@@ -11,6 +11,34 @@ body {
   scrollbar-gutter: stable;
 }
 
+.my-glass {
+  background: rgba(0, 0, 0, 0.47);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+}
+
+.custom-shape-divider-bottom-1690479286 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-bottom-1690479286 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 132px;
+}
+
+.custom-shape-divider-bottom-1690479286 .shape-fill {
+  @apply fill-base-100
+}
+
 .section {
   @apply w-full flex justify-center items-center bg-base-200;
 }
