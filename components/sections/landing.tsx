@@ -43,9 +43,9 @@ export default function Landing() {
       />
       <Image
         id="about"
-        alt="Background"
-        className="themed-svg bottom-wave"
-        src={"/assets/wave.svg"}
+        alt="Wave"
+        className="themed-svg scale-y-[20%] translate-y-[40%]"
+        src={"/assets/wave-inverted.svg"}
         fill={true}
         style={{ objectFit: "cover", objectPosition: "center" }}
       />

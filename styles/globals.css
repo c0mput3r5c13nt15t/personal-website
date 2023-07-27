@@ -22,10 +22,6 @@ body {
   @apply -scale-y-[20%] translate-y-[40%];
 }
 
-.top-wave {
-  @apply scale-y-[20%] -translate-y-[40%]
-}
-
 [data-theme="dark"] .themed-svg {
   @apply filter brightness-0;
 }
