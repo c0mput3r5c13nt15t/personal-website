@@ -27,14 +27,14 @@ export default function Contact() {
       />
       <Image
         alt="Wave"
-        className="scale-y-[20%] -translate-y-[40%] themed-svg"
+        className="scale-y-[20%] -translate-y-[calc(40%+1px)] themed-svg"
         src={"/assets/wave.svg"}
         fill={true}
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Image
         alt="Wave"
-        className="themed-svg bottom-wave"
+        className="themed-svg -scale-y-[20%] translate-y-[calc(40%+1px)]"
         src={"/assets/wave.svg"}
         fill={true}
         style={{ objectFit: "cover", objectPosition: "center" }}

@@ -18,10 +18,6 @@ body {
   -webkit-backdrop-filter: blur(5.1px);
 }
 
-.bottom-wave {
-  @apply -scale-y-[20%] translate-y-[40%];
-}
-
 [data-theme="dark"] .themed-svg {
   @apply filter brightness-0;
 }

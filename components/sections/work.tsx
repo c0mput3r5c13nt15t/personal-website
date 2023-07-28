@@ -26,7 +26,7 @@ export default function Work(): JSX.Element {
 
   return (
     <section id="work" className="section relative flex-col">
-      <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2">
+      <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2 w-full text-center">
         My recent projects
       </h1>
       <div className="carousel w-full bg-base-100">
@@ -38,7 +38,7 @@ export default function Work(): JSX.Element {
           >
             <>
               <button
-                className="btn btn-circle btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                className="hidden 2xl:flex btn btn-circle btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                 onClick={() => {
                   document
                     .querySelector("#slide" + (index - 1))
@@ -54,7 +54,7 @@ export default function Work(): JSX.Element {
                 </HeroiconsWrapper>
               </button>
               <button
-                className="btn btn-circle btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                className="hidden 2xl:flex btn btn-circle btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                 onClick={() => {
                   document
                     .querySelector("#slide" + (index + 1))
@@ -71,13 +71,13 @@ export default function Work(): JSX.Element {
               </button>
             </>
             <div className="max-w-3xl mx-auto px-3">
-              <div className="flex flex-row gap-5">
+              <div className="flex flex-col sm:flex-row gap-5">
                 <Image
                   alt="Project image"
                   src={item.image ?? "/assets/pp.jpg"}
                   width={400}
                   height={400}
-                  className="rounded-lg shadow-lg w-40"
+                  className="rounded-lg shadow-lg w-full h-40 sm:h-auto sm:w-40"
                   style={{ objectFit: "cover" }}
                 />
                 <div className="flex flex-col gap-3">
@@ -95,9 +95,7 @@ export default function Work(): JSX.Element {
                     rel="noreferrer"
                   >
                     View on GitHub
-                    <HeroiconsWrapper
-                      className="inline-block h-5 w-5 ml-1 -translate-y-1"
-                    >
+                    <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -110,6 +108,21 @@ export default function Work(): JSX.Element {
             </div>
           </article>
         ))}
+      </div>
+      <div className="flex justify-center absolute left-1/2 bottom-52 -translate-x-1/2 gap-2">
+        {Array(slides.length)
+          .fill(0)
+          .map((_, index) => (
+            <button
+              key={index}
+              className="btn h-3 w-3 min-h-0 btn-circle btn-primary"
+              onClick={() => {
+                document
+                  .querySelector("#slide" + index)
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+            />
+          ))}
       </div>
       {/* <div className="hero bg-base-100 items-start">
         <div className="hero-content max-w-none w-full lg:flex-row-reverse items-start px-0">
