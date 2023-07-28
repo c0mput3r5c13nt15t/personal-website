@@ -36,7 +36,7 @@ export default function Landing() {
     <section id="landing" className="section relative">
       <Image
         alt="Background"
-        src={"/assets/bg-landing.svg"}
+        src={"/assets/bg-landing-min.svg"}
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}

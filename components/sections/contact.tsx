@@ -12,7 +12,7 @@ export default function Contact() {
     <section id="contact" className="section relative h-screen">
       <Image
         alt="Background"
-        src={"/assets/bg-contacts.svg"}
+        src={"/assets/bg-contacts-min.svg"}
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}
