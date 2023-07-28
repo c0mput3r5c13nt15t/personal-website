@@ -4,9 +4,8 @@ import { db } from "@/lib/firebase";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 
 export default function About({ me }: { me: any }) {
-  const [tab, setTab] = useState<"skills" | "motivation" | "education">(
-    "skills"
-  );
+  const tabes = ["skills", "motivation", "education"];
+  const [activeTab, setActiveTab] = useState<string>("skills");
   const content = {
     skills:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
@@ -16,47 +15,37 @@ export default function About({ me }: { me: any }) {
 
   return (
     <section className="section">
-      <div className="hero bg-base-100 items-start pb-20 pt-10">
+      <div className="hero bg-base-100 items-start">
         <div className="hero-content w-full max-w-3xl lg:flex-row-reverse items-start">
           <div className="flex flex-col gap-3 w-full">
+            <h1 className="font-bold text-3xl w-full text-center mb-5">
+              About Me
+            </h1>
             <div className="tabs w-full justify-start">
-              <a
-                className={`tab tab-bordered transition-all	 ${
-                  tab === "skills" ? "tab-active" : ""
-                }`}
-                onClick={() => setTab("skills")}
-              >
-                Skills
-              </a>
-              <a
-                className={`tab tab-bordered transition-all	 ${
-                  tab === "motivation" ? "tab-active" : ""
-                }`}
-                onClick={() => setTab("motivation")}
-              >
-                Motivation
-              </a>
-              <a
-                className={`tab tab-bordered transition-all	 ${
-                  tab === "education" ? "tab-active" : ""
-                }`}
-                onClick={() => setTab("education")}
-              >
-                Education
-              </a>
+              {tabes.map((tab) => (
+                <a
+                  key={tab}
+                  className={`tab sm:tab-lg tab-bordered transition-all capitalize ${
+                    tab === activeTab ? "tab-active" : ""
+                  }`}
+                  onClick={() => setActiveTab(tab)}
+                >
+                  {tab}
+                </a>
+              ))}
               <div className="grow tab-bordered" />
             </div>
             <div className="flex flex-row">
               <div
                 className={`block w-full -mr-[100%] ${
-                  tab !== "skills" ? "invisible" : ""
+                  activeTab !== "skills" ? "invisible" : ""
                 }`}
               >
-                <p>{content["skills"]}</p>
+                <p className="sm:text-lg">{content["skills"]}</p>
               </div>
               <div
                 className={`block w-full -mr-[100%] ${
-                  tab !== "motivation" ? "invisible" : ""
+                  activeTab !== "motivation" ? "invisible" : ""
                 }`}
               >
                 <progress className="progress" value={0} max="100"></progress>
@@ -67,10 +56,10 @@ export default function About({ me }: { me: any }) {
               </div>
               <div
                 className={`block w-full -mr-[100%] ${
-                  tab !== "education" ? "invisible" : ""
+                  activeTab !== "education" ? "invisible" : ""
                 }`}
               >
-                {content["education"]}
+                <p className="sm:text-lg">{content["education"]}</p>
               </div>
             </div>
           </div>

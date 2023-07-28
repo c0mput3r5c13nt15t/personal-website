@@ -36,7 +36,7 @@ export default function Landing() {
     <section id="landing" className="section relative">
       <Image
         alt="Background"
-        src={"/assets/bg-landing-min.svg"}
+        src={"/assets/bg-landing.webp"}
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}
@@ -80,9 +80,16 @@ export default function Landing() {
               <p className="pb-6 pt-1 text-lg text-black hidden sm:block">
                 {text}
               </p>
-              <a href="#about" className="btn btn-accent invisible sm:visible">
+              <button
+                className="btn btn-accent invisible sm:visible"
+                onClick={() => {
+                  document
+                    .querySelector("#about")
+                    ?.scrollIntoView({ behavior: "smooth" });
+                }}
+              >
                 More about me
-              </a>
+              </button>
             </div>
           </div>
         </div>

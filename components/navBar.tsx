@@ -7,9 +7,11 @@ export default function Navbar({
   isDarkMode: boolean;
   setIsDarkMode: any;
 }) {
+  const sections = ["about", "work", "contact"];
+
   return (
     <>
-      <nav className="px-2 pt-2 w-full max-w-3xl fixed left-1/2 -translate-x-1/2 z-50">
+      <nav className="px-2 md:px-0 pt-2 w-full max-w-3xl fixed left-1/2 -translate-x-1/2 z-50">
         <div
           data-theme="dark"
           className="text-white navbar my-glass rounded-none md:rounded-box shadow-lg dark:shadow-none"
@@ -36,32 +38,49 @@ export default function Navbar({
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52"
               >
-                <li>
-                  <a href="#about">About</a>
-                </li>
-                {/* <li>
-                  <a href="#work">Work</a>
-                </li> */}
-                <li>
-                  <a href="#contact">Contact</a>
-                </li>
+                {sections.map((section) => (
+                  <li key={section}>
+                    <button
+                      onClick={() => {
+                        document
+                          .querySelector(`#${section}`)
+                          ?.scrollIntoView({ behavior: "smooth" });
+                      }}
+                      className="btn btn-ghost w-full text-left capitalize"
+                    >
+                      {section}
+                    </button>
+                  </li>
+                ))}
               </ul>
             </div>
-            <a href="#landing" className="btn btn-ghost normal-case text-xl">
+            <button
+              onClick={() => {
+                document
+                  .querySelector("#landing")
+                  ?.scrollIntoView({ behavior: "smooth" });
+              }}
+              className="btn btn-ghost normal-case text-xl"
+            >
               Paul Maier
-            </a>
+            </button>
           </div>
           <div className="navbar-center hidden md:flex">
             <ul className="flex flex-row gap-3 px-1">
-              <li>
-                <a className="btn btn-sm btn-ghost font-normal capitalize" href="#about">About</a>
-              </li>
-              {/* <li>
-                <a href="#work">Work</a>
-              </li> */}
-              <li>
-                <a className="btn btn-sm btn-ghost font-normal capitalize" href="#contact">Contact</a>
-              </li>
+              {sections.map((section) => (
+                <li key={section}>
+                  <button
+                    onClick={() => {
+                      document
+                        .querySelector(`#${section}`)
+                        ?.scrollIntoView({ behavior: "smooth" });
+                    }}
+                    className="btn btn-sm btn-ghost font-normal capitalize"
+                  >
+                    {section}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
           <div className="navbar-end">
