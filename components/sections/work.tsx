@@ -1,36 +1,31 @@
 import HeroiconsWrapper from "../heroiconsWrapper";
 import Image from "next/image";
 
-export default function Work(): JSX.Element {
-  const slides = [
-    {
-      title: "Diribitio",
-      tags: ["Angular", "Laravel", "Python", "Docker"],
-      theme: "diribitio",
-      github: "https://github.com/diribitio/diribitio",
-    },
-    {
-      title: "Birklehof IT",
-      tags: ["React", "Next.js", "TailwindCSS", "TypeScript"],
-      theme: "birklehof",
-      image: "/assets/birklehof.jpg",
-      github: "https://github.com/Birklehof",
-    },
-    {
-      title: "Astro Pi",
-      tags: ["Python", "Machine Learning", "Raspberry Pi"],
-      theme: "astropi",
-      github: "https://github.com/cloudic-ai",
-    },
-  ];
+export type Project = {
+  title: string;
+  start?: string;
+  end?: string;
+  descr: string;
+  image: string;
+  link: {
+    text: string;
+    href: string;
+  };
+};
 
+export type WorkProps = {
+  title: string;
+  projects: Project[];
+};
+
+export default function Work({ title, projects }: WorkProps): JSX.Element {
   return (
     <section id="work" className="section relative flex-col">
       <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2 w-full text-center">
-        My recent projects
+        {title}
       </h1>
       <div className="carousel w-full bg-base-100">
-        {slides.map((item, index) => (
+        {projects.map((project, index) => (
           <article
             id={`slide${index}`}
             key={index}
@@ -42,7 +37,7 @@ export default function Work(): JSX.Element {
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                   onClick={() => {
                     document
-                      .querySelector("#slide" + (index - 1))
+                      .querySelector("#project" + (index - 1))
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
@@ -55,12 +50,12 @@ export default function Work(): JSX.Element {
                   </HeroiconsWrapper>
                 </button>
               )}
-              {index !== slides.length - 1 && (
+              {index !== projects.length - 1 && (
                 <button
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                   onClick={() => {
                     document
-                      .querySelector("#slide" + (index + 1))
+                      .querySelector("#project" + (index + 1))
                       ?.scrollIntoView({ behavior: "smooth" });
                   }}
                 >
@@ -76,29 +71,31 @@ export default function Work(): JSX.Element {
             </>
             <div className="max-w-3xl mx-auto px-3">
               <div className="flex flex-col sm:flex-row gap-5">
-                <Image
-                  alt="Project image"
-                  src={item.image ?? "/assets/pp.jpg"}
-                  width={400}
-                  height={400}
-                  className="rounded-lg shadow-lg w-full h-40 sm:h-auto sm:w-40"
-                  style={{ objectFit: "cover" }}
-                />
-                <div className="flex flex-col gap-3">
-                  <h1 className="text-xl font-bold w-full">{item.title}</h1>
-                  <p className="text-lg">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                    Omnis eligendi, cupiditate esse harum optio repellat nemo,
-                    dolor recusandae velit repellendus quae? Commodi qui
-                    laboriosam illo culpa dicta facere. Exercitationem, in.
+                {project.image && (
+                  <Image
+                    alt="Project image"
+                    src={project.image || "/assets/pp.jpg"}
+                    width={400}
+                    height={400}
+                    className="rounded-lg shadow-lg w-full h-40 sm:h-auto sm:w-40"
+                    style={{ objectFit: "cover" }}
+                  />
+                )}
+                <div className="flex flex-col">
+                  <h1 className="text-xl font-bold w-full">{project.title}</h1>
+                  <h2 className="text-sm opacity-70 uppercase mb-2">
+                    {project.start} - {project.end}
+                  </h2>
+                  <p className="text-lg mb-1">
+                    {project.descr}
                   </p>
                   <a
                     className="link text-accent"
-                    href={item.github}
+                    href={project.link.href}
                     target="_blank"
                     rel="noreferrer"
                   >
-                    View on GitHub
+                    {project.link.text}
                     <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
                       <path
                         strokeLinecap="round"
@@ -114,7 +111,7 @@ export default function Work(): JSX.Element {
         ))}
       </div>
       <div className="btn-group absolute left-1/2 bottom-48 -translate-x-1/2">
-        {Array(slides.length)
+        {Array(projects.length)
           .fill(0)
           .map((_, index) => (
             <button
@@ -122,7 +119,7 @@ export default function Work(): JSX.Element {
               className="btn btn-primary btn-sm"
               onClick={() => {
                 document
-                  .querySelector("#slide" + index)
+                  .querySelector("#project" + index)
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
             >
@@ -164,7 +161,7 @@ export default function Work(): JSX.Element {
                     .fill(0)
                     .map((_, index) => (
                       <a
-                        href={`#slide${index}`}
+                        href={`#project${index}`}
                         key={index}
                         className="btn h-4 w-4 min-h-0 btn-circle btn-primary"
                       />

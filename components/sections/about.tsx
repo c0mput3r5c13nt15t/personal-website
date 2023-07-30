@@ -3,16 +3,26 @@ import CodeWindow from "../codeWindow";
 import { db } from "@/lib/firebase";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 
-export default function About() {
+export type skill = {
+  name: string;
+  level: number;
+};
+
+export type AboutProps = {
+  title: string;
+  motivation: string;
+  skills: skill[];
+  education: string;
+};
+
+export default function About({
+  title,
+  motivation,
+  skills,
+  education,
+}: AboutProps): JSX.Element {
   const tabes = ["motivation", "skills", "education"];
   const [activeTab, setActiveTab] = useState<string>("skills");
-  const content = {
-    skills:
-      "Lorem **ipsum** dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
-    motivation:
-      "Lorem **ipsum** dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
-    education: "Lorem ipsum3",
-  };
 
   function styleText(text: string) {
     return { __html: text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>") };
@@ -24,7 +34,7 @@ export default function About() {
         <div className="hero-content w-full max-w-3xl lg:flex-row-reverse items-start">
           <div className="flex flex-col gap-3 w-full">
             <h1 className="font-bold text-3xl w-full text-center mb-5">
-              About Me
+              {title}
             </h1>
             <div className="tabs w-full justify-start">
               {tabes.map((tab) => (
@@ -48,7 +58,7 @@ export default function About() {
               >
                 <p
                   className="sm:text-lg"
-                  dangerouslySetInnerHTML={styleText(content["motivation"])}
+                  dangerouslySetInnerHTML={styleText(motivation)}
                 />
               </div>
               <div
@@ -56,53 +66,26 @@ export default function About() {
                   activeTab !== "skills" ? "invisible" : ""
                 }`}
               >
-                <div className="grid grid-cols-5">
-                  <p className="sm:text-lg text-center">Web Dev</p>
-                  <progress
-                    className="progress progress-primary col-span-4 h-3 my-auto"
-                    value="80"
-                    max="100"
-                  />
-                </div>
-                <div className="grid grid-cols-5">
-                  <p className="sm:text-lg text-center">Linux</p>
-                  <progress
-                    className="progress progress-primary col-span-4 h-3 my-auto"
-                    value="70"
-                    max="100"
-                  />
-                </div>
-                <div className="grid grid-cols-5">
-                  <p className="sm:text-lg text-center">Python</p>
-                  <progress
-                    className="progress progress-primary col-span-4 h-3 my-auto"
-                    value="90"
-                    max="100"
-                  />
-                </div>
-                <div className="grid grid-cols-5">
-                  <p className="sm:text-lg text-center">Haskell</p>
-                  <progress
-                    className="progress progress-primary col-span-4 h-3 my-auto"
-                    value="60"
-                    max="100"
-                  />
-                </div>
-                <div className="grid grid-cols-5">
-                  <p className="sm:text-lg text-center">Rust</p>
-                  <progress
-                    className="progress progress-primary col-span-4 h-3 my-auto"
-                    value="15"
-                    max="100"
-                  />
-                </div>
+                {skills.map((skill) => (
+                  <div className="grid grid-cols-5" key={skill.name}>
+                    <p className="sm:text-lg text-center">{skill.name}</p>
+                    <progress
+                      className="progress progress-primary col-span-4 h-3 my-auto"
+                      value={skill.level}
+                      max="100"
+                    />
+                  </div>
+                ))}
               </div>
               <div
                 className={`block w-full -mr-[100%] ${
                   activeTab !== "education" ? "invisible" : ""
                 }`}
               >
-                <p className="sm:text-lg">{content["education"]}</p>
+                <p
+                  className="sm:text-lg"
+                  dangerouslySetInnerHTML={styleText(education)}
+                />
               </div>
             </div>
           </div>

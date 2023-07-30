@@ -10,8 +10,6 @@ export default function Landing({
   titles,
   welcomeText,
 }: LandingProps): JSX.Element {
-  const isDarkMode = false;
-
   useEffect(() => {
     let iteration = 0;
     document
@@ -63,7 +61,7 @@ export default function Landing({
                     id="typingContent"
                     className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-primary pr-3 text-4xl font-bold text-primary"
                   >
-                    {titles[0]}
+                    {/* {titles[0]} */}
                   </div>
                 </div>
               </h1>
