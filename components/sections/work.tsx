@@ -6,7 +6,7 @@ export type Project = {
   start?: string;
   end?: string;
   descr: string;
-  image: string;
+  image?: string;
   link: {
     text: string;
     href: string;
@@ -83,12 +83,12 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                 )}
                 <div className="flex flex-col">
                   <h1 className="text-xl font-bold w-full">{project.title}</h1>
-                  <h2 className="text-sm opacity-70 uppercase mb-2">
-                    {project.start} - {project.end}
-                  </h2>
-                  <p className="text-lg mb-1">
-                    {project.descr}
-                  </p>
+                  {project.start && (
+                    <h2 className="text-sm opacity-70 uppercase mb-2">
+                      {project.start} - {project.end || "now"}
+                    </h2>
+                  )}
+                  <p className="text-lg mb-1">{project.descr}</p>
                   <a
                     className="link text-primary"
                     href={project.link.href}
