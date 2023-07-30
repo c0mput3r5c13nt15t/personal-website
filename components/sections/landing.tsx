@@ -30,12 +30,11 @@ export default function Landing({
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
-      <Image
+      <img
         id="about"
         alt="Wave"
-        className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)]"
+        className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)] w-full h-full absolute bottom-0 left-0"
         src={"/assets/wave-inverted.svg"}
-        fill={true}
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <div className="hero min-h-screen">

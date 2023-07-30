@@ -21,7 +21,7 @@ export type WorkProps = {
 export default function Work({ title, projects }: WorkProps): JSX.Element {
   return (
     <section id="work" className="section relative flex-col">
-      <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2 w-full text-center">
+      <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2 w-full text-center z-10">
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
@@ -90,7 +90,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                     {project.descr}
                   </p>
                   <a
-                    className="link text-accent"
+                    className="link text-primary"
                     href={project.link.href}
                     target="_blank"
                     rel="noreferrer"

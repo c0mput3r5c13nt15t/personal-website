@@ -67,15 +67,25 @@ export default function About({
                 }`}
               >
                 {skills.map((skill) => (
-                  <div className="grid grid-cols-5" key={skill.name}>
-                    <p className="sm:text-lg text-center">{skill.name}</p>
+                  <div
+                    className="grid grid-cols-5 sm:grid-cols-6 gap-2 sm:gap-3"
+                    key={skill.name}
+                  >
+                    <p className="text-sm sm:text-lg text-right">
+                      {skill.name}
+                    </p>
                     <progress
-                      className="progress progress-primary col-span-4 h-3 my-auto"
+                      className="progress progress-primary col-span-4 sm:col-span-5 sm:h-3 my-auto"
                       value={skill.level}
                       max="100"
                     />
                   </div>
                 ))}
+                {skills.length === 0 && (
+                  <p className="text-sm sm:text-lg text-right">
+                    Error while fetching content
+                  </p>
+                )}
               </div>
               <div
                 className={`block w-full -mr-[100%] ${
