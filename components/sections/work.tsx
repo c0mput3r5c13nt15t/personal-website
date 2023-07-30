@@ -37,38 +37,42 @@ export default function Work(): JSX.Element {
             className="carousel-item relative w-full pt-64 pb-64"
           >
             <>
-              <button
-                className="hidden 2xl:flex btn btn-circle btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                onClick={() => {
-                  document
-                    .querySelector("#slide" + (index - 1))
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <HeroiconsWrapper>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </HeroiconsWrapper>
-              </button>
-              <button
-                className="hidden 2xl:flex btn btn-circle btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                onClick={() => {
-                  document
-                    .querySelector("#slide" + (index + 1))
-                    ?.scrollIntoView({ behavior: "smooth" });
-                }}
-              >
-                <HeroiconsWrapper>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  />
-                </HeroiconsWrapper>
-              </button>
+              {index !== 0 && (
+                <button
+                  className="hidden 2xl:flex btn btn-square btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                  onClick={() => {
+                    document
+                      .querySelector("#slide" + (index - 1))
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <HeroiconsWrapper>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 19.5L8.25 12l7.5-7.5"
+                    />
+                  </HeroiconsWrapper>
+                </button>
+              )}
+              {index !== slides.length - 1 && (
+                <button
+                  className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                  onClick={() => {
+                    document
+                      .querySelector("#slide" + (index + 1))
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                >
+                  <HeroiconsWrapper>
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    />
+                  </HeroiconsWrapper>
+                </button>
+              )}
             </>
             <div className="max-w-3xl mx-auto px-3">
               <div className="flex flex-col sm:flex-row gap-5">
@@ -109,19 +113,21 @@ export default function Work(): JSX.Element {
           </article>
         ))}
       </div>
-      <div className="flex justify-center absolute left-1/2 bottom-52 -translate-x-1/2 gap-2">
+      <div className="btn-group absolute left-1/2 bottom-48 -translate-x-1/2">
         {Array(slides.length)
           .fill(0)
           .map((_, index) => (
             <button
               key={index}
-              className="btn h-3 w-3 min-h-0 btn-circle btn-primary"
+              className="btn btn-primary btn-sm"
               onClick={() => {
                 document
                   .querySelector("#slide" + index)
                   ?.scrollIntoView({ behavior: "smooth" });
               }}
-            />
+            >
+              {`${index + 1}`.slice(-2)}
+            </button>
           ))}
       </div>
       {/* <div className="hero bg-base-100 items-start">

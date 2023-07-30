@@ -3,15 +3,20 @@ import CodeWindow from "../codeWindow";
 import { db } from "@/lib/firebase";
 import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
 
-export default function About({ me }: { me: any }) {
-  const tabes = ["skills", "motivation", "education"];
+export default function About() {
+  const tabes = ["motivation", "skills", "education"];
   const [activeTab, setActiveTab] = useState<string>("skills");
   const content = {
     skills:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
-    motivation: "Lorem ipsum2",
+      "Lorem **ipsum** dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
+    motivation:
+      "Lorem **ipsum** dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis. Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque recusandae earum ut, beatae ratione ipsam qui nobis similique? Impedit sit nostrum nesciunt quis debitis eveniet ea facere repellat qui reiciendis.",
     education: "Lorem ipsum3",
   };
+
+  function styleText(text: string) {
+    return { __html: text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>") };
+  }
 
   return (
     <section className="section">
@@ -38,21 +43,59 @@ export default function About({ me }: { me: any }) {
             <div className="flex flex-row">
               <div
                 className={`block w-full -mr-[100%] ${
-                  activeTab !== "skills" ? "invisible" : ""
-                }`}
-              >
-                <p className="sm:text-lg">{content["skills"]}</p>
-              </div>
-              <div
-                className={`block w-full -mr-[100%] ${
                   activeTab !== "motivation" ? "invisible" : ""
                 }`}
               >
-                <progress className="progress" value={0} max="100"></progress>
-                <progress className="progress" value="10" max="100"></progress>
-                <progress className="progress" value="40" max="100"></progress>
-                <progress className="progress" value="70" max="100"></progress>
-                <progress className="progress" value="100" max="100"></progress>
+                <p
+                  className="sm:text-lg"
+                  dangerouslySetInnerHTML={styleText(content["motivation"])}
+                />
+              </div>
+              <div
+                className={`block w-full -mr-[100%] ${
+                  activeTab !== "skills" ? "invisible" : ""
+                }`}
+              >
+                <div className="grid grid-cols-5">
+                  <p className="sm:text-lg text-center">Web Dev</p>
+                  <progress
+                    className="progress progress-primary col-span-4 h-3 my-auto"
+                    value="80"
+                    max="100"
+                  />
+                </div>
+                <div className="grid grid-cols-5">
+                  <p className="sm:text-lg text-center">Linux</p>
+                  <progress
+                    className="progress progress-primary col-span-4 h-3 my-auto"
+                    value="70"
+                    max="100"
+                  />
+                </div>
+                <div className="grid grid-cols-5">
+                  <p className="sm:text-lg text-center">Python</p>
+                  <progress
+                    className="progress progress-primary col-span-4 h-3 my-auto"
+                    value="90"
+                    max="100"
+                  />
+                </div>
+                <div className="grid grid-cols-5">
+                  <p className="sm:text-lg text-center">Haskell</p>
+                  <progress
+                    className="progress progress-primary col-span-4 h-3 my-auto"
+                    value="60"
+                    max="100"
+                  />
+                </div>
+                <div className="grid grid-cols-5">
+                  <p className="sm:text-lg text-center">Rust</p>
+                  <progress
+                    className="progress progress-primary col-span-4 h-3 my-auto"
+                    value="15"
+                    max="100"
+                  />
+                </div>
               </div>
               <div
                 className={`block w-full -mr-[100%] ${

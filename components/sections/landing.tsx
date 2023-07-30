@@ -1,21 +1,16 @@
-import useRemoteConfig from "@/lib/firebase/useRemoteConfig";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function Landing() {
+export type LandingProps = {
+  titles: string[];
+  welcomeText: string;
+};
+
+export default function Landing({
+  titles,
+  welcomeText,
+}: LandingProps): JSX.Element {
   const isDarkMode = false;
-  const [titles] = useRemoteConfig<string[]>("titles_landing", [
-    "Paul Maier",
-    "a student",
-    "a developer",
-    "a designer",
-    "a maker",
-    "a team player",
-  ]);
-  const [text] = useRemoteConfig<string>(
-    "text_landing",
-    "On this website you can learn about me, my goals and the projects I worked or still am working on. If you want to, feel free to contact me."
-  );
 
   useEffect(() => {
     let iteration = 0;
@@ -27,10 +22,6 @@ export default function Landing() {
           titles[iteration % titles.length];
       });
   }, [titles]);
-
-  function scrollDown() {
-    document.getElementById("bottom")?.scrollIntoView({ behavior: "smooth" });
-  }
 
   return (
     <section id="landing" className="section relative">
@@ -70,7 +61,7 @@ export default function Landing() {
                 <div className="w-min max-w-[18rem]">
                   <div
                     id="typingContent"
-                    className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-accent pr-3 text-4xl font-bold text-accent"
+                    className="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-primary pr-3 text-4xl font-bold text-primary"
                   >
                     {titles[0]}
                   </div>
@@ -78,10 +69,10 @@ export default function Landing() {
               </h1>
 
               <p className="pb-6 pt-1 text-lg text-black hidden sm:block">
-                {text}
+                {welcomeText}
               </p>
               <button
-                className="btn btn-accent invisible sm:visible"
+                className="btn btn-primary invisible sm:visible"
                 onClick={() => {
                   document
                     .querySelector("#about")

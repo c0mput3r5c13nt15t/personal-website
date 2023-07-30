@@ -1,63 +1,37 @@
 import Head from "next/head";
 import Footer from "@/components/footer";
-import { collection, doc, getDoc, getDocs, query } from "firebase/firestore";
-import { db } from "@/lib/firebase";
-import Section from "@/components/section";
 import { useEffect, useState } from "react";
 import Navbar from "@/components/navBar";
-import Landing from "@/components/sections/landing";
+import Landing, { LandingProps } from "@/components/sections/landing";
 import Work from "@/components/sections/work";
 import About from "@/components/sections/about";
 import Contact from "@/components/sections/contact";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "@/lib/firebase";
 
-export const getStaticProps = async () => {
-  async function getProjects(section: string): Promise<any[]> {
-    const q = query(collection(db, section));
-    const querySnapshot = await getDocs(q);
-    const projects: any[] = [];
-    querySnapshot.docs.map((doc) => {
-      const data = doc.data();
-      const new_project = { id: doc.id, ...data };
-      projects.push(new_project);
-    });
-    return projects;
-  }
-
-  async function getMe(): Promise<any> {
-    const docRef = doc(db, "me", "0WGLUBVzOZYN07RZ2bmI");
-    const docSnap = await getDoc(docRef);
-    return docSnap.data();
-  }
+export async function getStaticProps() {
+  const landingPageProps = getDoc(doc(db, "sections", "landing")).then(
+    (doc) => {
+      return {
+        titles: doc.data()?.titles || ["Error fetching titles"],
+        welcomeText: doc.data()?.welcomeText || "Error fetching welcome text",
+      };
+    }
+  ) as Promise<LandingProps>;
 
   return {
     props: {
-      me: await getMe(),
-      sections: [
-        {
-          title: "Computer Science Projects",
-          description:
-            "In elementary school, I learned to program. Since then I have worked on many projects. Here is a selection of the most important ones. Even more can be found on my GitHub profile.",
-          projects: await getProjects("projects"),
-        },
-        {
-          title: "Competitions",
-          description:
-            "Over the years, I have also taken part in many competitions, the most important ones of which are listed here.",
-          projects: await getProjects("competitions"),
-        },
-        {
-          title: "Miscellaneous",
-          description:
-            "Besides my computer science projects and competitions, I have done several internships and am involved in voluntary work.",
-          projects: await getProjects("miscellaneous"),
-        },
-      ],
+      landingPageProps: await landingPageProps,
     },
     revalidate: parseInt(process.env.REVALIDATE_SECONDS || "3600", 10),
   };
-};
+}
 
-export default function Home({ me, sections }: { me: any; sections: any[] }) {
+export default function Home({
+  landingPageProps,
+}: {
+  landingPageProps: LandingProps;
+}) {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -83,22 +57,11 @@ export default function Home({ me, sections }: { me: any; sections: any[] }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col w-full">
-        <Navbar 
-          isDarkMode={isDarkMode}
-          setIsDarkMode={setIsDarkMode}
-        />
-        <Landing />
-        <About me={me} />
+        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Landing {...landingPageProps} />
+        <About />
         <Work />
         <Contact />
-        {/* {sections.map((section) => (
-          <Section
-            key={section.title}
-            title={section.title}
-            description={section.description}
-            projects={section.projects}
-          />
-        ))} */}
         <Footer />
       </main>
     </>

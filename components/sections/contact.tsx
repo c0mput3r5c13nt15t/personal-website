@@ -12,7 +12,7 @@ export default function Contact() {
     <section id="contact" className="section relative h-screen">
       <Image
         alt="Background"
-        src={"/assets/bg-contacts.webp"} // TODO: Minify
+        src={"/assets/bg-contacts-alt.webp"} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill={true}
         quality={100}
         style={{ objectFit: "cover", objectPosition: "center" }}

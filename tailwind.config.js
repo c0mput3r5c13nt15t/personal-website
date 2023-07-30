@@ -51,17 +51,15 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#57d130",
-          secondary: "#23873C",
-          accent: "#D20F44",
+          primary: "#D20F44",
+          accent: "#57d130",
           "base-100": "#ffffff",
         },
       },
       {
         dark: {
-          primary: "#57d130",
-          secondary: "#23873C",
-          accent: "#D20F44",
+          primary: "#D20F44",
+          accent: "#57d130",
           "base-100": "#000000",
           "base-content": "#ffffff",
         },
@@ -131,5 +129,5 @@ module.exports = {
       "winter",
     ],
   },
-  plugins: [require("daisyui"), require('@tailwindcss/line-clamp'),],
+  plugins: [require("daisyui"),],
 };
