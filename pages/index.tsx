@@ -52,7 +52,10 @@ export async function getStaticProps() {
 
   return {
     props: {
-      landingProps: await landingProps,
+      landingProps: {
+        ...(await landingProps),
+        github: await contactProps.then((props) => props.contact.github), // Would be better to extract
+      },
       aboutProps: await aboutProps,
       workProps: await workProps,
       contactProps: await contactProps,

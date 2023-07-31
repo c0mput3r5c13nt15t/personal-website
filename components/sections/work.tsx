@@ -88,7 +88,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                       {project.start} - {project.end || "now"}
                     </h2>
                   )}
-                  <p className="text-lg mb-1">{project.descr}</p>
+                  <p className="sm:text-lg mb-1">{project.descr}</p>
                   <a
                     className="link text-primary"
                     href={project.link.href}
