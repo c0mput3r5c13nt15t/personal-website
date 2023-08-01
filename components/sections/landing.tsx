@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import HeroiconsWrapper from "../heroiconsWrapper";
+import bg_landing from "../../public/assets/bg-landing.webp";
+import profile_picture from "../../public/assets/pp.jpg";
 
 export type LandingProps = {
   titles: string[];
@@ -28,17 +30,21 @@ export default function Landing({
     <section id="landing" className="section relative">
       <Image
         alt="Background"
-        src={"/assets/bg-landing.webp"}
+        src={bg_landing}
         fill={true}
         quality={100}
-        style={{ objectFit: "cover", objectPosition: "center" }}
+        style={{ objectFit: "cover" }}
+        placeholder="blur"
+        priority={true}
       />
-      <img
+      <Image
         id="about"
         alt="Wave"
-        className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)] w-full h-full absolute bottom-0 left-0"
+        className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)]"
         src={"/assets/wave-inverted.svg"}
-        style={{ objectFit: "cover", objectPosition: "center" }}
+        style={{ objectFit: "cover" }}
+        fill={true}
+        priority={true}
       />
       <div className="hero min-h-screen">
         <div className="hero-content w-full max-w-[18rem] sm:max-w-3xl">
@@ -47,11 +53,12 @@ export default function Landing({
               <div className="w-full rounded-full shadow-lg">
                 <Image
                   alt="Profile picture"
-                  src={"/assets/pp.jpg"}
+                  src={profile_picture}
                   width={400}
                   height={400}
                   style={{ objectFit: "cover" }}
                   priority={true}
+                  placeholder="blur"
                 />
               </div>
             </div>

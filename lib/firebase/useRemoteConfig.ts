@@ -34,7 +34,7 @@ export default function useRemoteConfig<CollectionType>(
           console.log(err);
         });
     }
-  }, []);
+  }, [name, defaultValue]);
 
   return [value];
 }
