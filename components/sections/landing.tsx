@@ -80,7 +80,6 @@ export default function Landing({
               </p>
               <div className="flex flex-row gap-2 invisible sm:visible">
                 <button
-                  aria-label="More about me"
                   className="btn btn-primary"
                   onClick={() => {
                     document
@@ -114,6 +113,7 @@ export default function Landing({
         </div>
       </div>
       <button
+        aria-label="More about me"
         className="btn btn-circle btn-ghost absolute bottom-0 left-1/2 !-translate-x-1/2 mb-5 sm:hidden"
         onClick={() => {
           document

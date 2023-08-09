@@ -21,8 +21,8 @@ export default function About({
   skills,
   education,
 }: AboutProps): JSX.Element {
-  const tabes = ["motivation", "skills", "education"];
-  const [activeTab, setActiveTab] = useState<string>("skills");
+  const tabs = ["motivation", "skills", "education"];
+  const [activeTab, setActiveTab] = useState<string>(tabs[0]);
 
   function styleText(text: string) {
     return { __html: text.replace(/\*\*(.*?)\*\*/g, "<b>$1</b>") };
@@ -37,7 +37,7 @@ export default function About({
               {title}
             </h1>
             <div className="tabs w-full justify-start">
-              {tabes.map((tab) => (
+              {tabs.map((tab) => (
                 <button
                   key={tab}
                   className={`tab sm:tab-lg tab-bordered transition-all capitalize ${
