@@ -54,11 +54,12 @@ export default function Landing({
                 <Image
                   alt="Profile picture"
                   src={profile_picture}
-                  width={400}
-                  height={400}
+                  width={350}
+                  height={350}
                   style={{ objectFit: "cover" }}
                   priority={true}
                   placeholder="blur"
+                  sizes="350px"
                 />
               </div>
             </div>
