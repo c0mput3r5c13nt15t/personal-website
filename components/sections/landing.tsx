@@ -31,11 +31,11 @@ export default function Landing({
       <Image
         alt="Background"
         src={bg_landing}
-        fill={true}
+        fill
         quality={100}
         style={{ objectFit: "cover" }}
         placeholder="blur"
-        priority={true}
+        priority
       />
       <Image
         id="about"
@@ -43,23 +43,22 @@ export default function Landing({
         className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)]"
         src={"/assets/wave-inverted.svg"}
         style={{ objectFit: "cover" }}
-        fill={true}
-        priority={true}
+        fill
+        priority
       />
       <div className="hero min-h-screen">
         <div className="hero-content w-full max-w-[18rem] sm:max-w-3xl">
           <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 sm:mb-36 items-center">
-            <div className="avatar ml-auto mr-auto">
-              <div className="w-full rounded-full shadow-lg">
+            <div className="avatar ml-auto mr-auto w-[50vw] sm:w-80 md:w-96">
+              <div className="rounded-full shadow-lg w-full">
                 <Image
                   alt="Profile picture"
                   src={profile_picture}
-                  width={350}
-                  height={350}
-                  style={{ objectFit: "cover" }}
-                  priority={true}
+                  priority
                   placeholder="blur"
-                  sizes="350px"
+                  width={300}
+                  height={300}
+                  sizes="(min-width: 640px) 50vw, (min-width: 768px) 320px, 384px"
                 />
               </div>
             </div>
