@@ -1,8 +1,6 @@
 import Link from "next/link";
 import { ReactNode } from "react";
 import Image from "next/image";
-import SimpleBar from "simplebar-react";
-import "simplebar-react/dist/simplebar.min.css";
 
 export default function CodeWindow({
   object,
@@ -194,43 +192,41 @@ export default function CodeWindow({
   return (
     <div className="mockup-code bg-zinc-800 text-zinc-600 bg-opacity-95 w-full h-full">
       <div className="mx-4">
-        <SimpleBar>
-          <pre className="brackets -ml-4">
-            <span className="const">const</span>{" "}
-            <span className="variable">
-              {variableName || abbreviate(object.name)}
-            </span>{" "}
-            <span className="white">=</span> {"{"}
-          </pre>
-          {Object.keys(object)
-            .filter((key) => !hiddenKeys.includes(key))
-            .sort((a, b) => {
-              return compareObjectPropertyKeys(a, b);
-            })
-            .map((key) =>
-              (() => {
-                if (typeof object[key] === "string") {
-                  return (
-                    <pre key={key} className="flex">
-                      <span className="key">{key}: </span>
-                      {displayValue(object[key])}
-                    </pre>
-                  );
-                } else {
-                  return (
-                    <pre key={key}>
-                      <span className="key">{key}: </span>
-                      {displayValue(object[key])}
-                    </pre>
-                  );
-                }
-              })()
-            )}
-          <pre className="brackets brackets -ml-4">
-            {"}"}
-            <span className="white">;</span>
-          </pre>
-        </SimpleBar>
+        <pre className="brackets -ml-4">
+          <span className="const">const</span>{" "}
+          <span className="variable">
+            {variableName || abbreviate(object.name)}
+          </span>{" "}
+          <span className="white">=</span> {"{"}
+        </pre>
+        {Object.keys(object)
+          .filter((key) => !hiddenKeys.includes(key))
+          .sort((a, b) => {
+            return compareObjectPropertyKeys(a, b);
+          })
+          .map((key) =>
+            (() => {
+              if (typeof object[key] === "string") {
+                return (
+                  <pre key={key} className="flex">
+                    <span className="key">{key}: </span>
+                    {displayValue(object[key])}
+                  </pre>
+                );
+              } else {
+                return (
+                  <pre key={key}>
+                    <span className="key">{key}: </span>
+                    {displayValue(object[key])}
+                  </pre>
+                );
+              }
+            })()
+          )}
+        <pre className="brackets brackets -ml-4">
+          {"}"}
+          <span className="white">;</span>
+        </pre>
       </div>
     </div>
   );

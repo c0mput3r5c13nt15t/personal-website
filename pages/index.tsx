@@ -6,7 +6,7 @@ import Landing, { LandingProps } from "@/components/sections/landing";
 import Work, { Project, WorkProps } from "@/components/sections/work";
 import About, { AboutProps, skill as Skill } from "@/components/sections/about";
 import Contact, { ContactProps } from "@/components/sections/contact";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc } from "firebase/firestore/lite";
 import { db } from "@/lib/firebase";
 
 export async function getStaticProps() {
