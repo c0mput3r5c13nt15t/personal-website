@@ -38,7 +38,7 @@ export default function About({
             </h1>
             <div className="tabs w-full justify-start">
               {tabes.map((tab) => (
-                <a
+                <button
                   key={tab}
                   className={`tab sm:tab-lg tab-bordered transition-all capitalize ${
                     tab === activeTab ? "tab-active" : ""
@@ -46,7 +46,7 @@ export default function About({
                   onClick={() => setActiveTab(tab)}
                 >
                   {tab}
-                </a>
+                </button>
               ))}
               <div className="grow tab-bordered" />
             </div>

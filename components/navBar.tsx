@@ -85,6 +85,7 @@ export default function Navbar({
           </div>
           <div className="navbar-end">
             <button
+              aria-label="Toggle dark mode"
               className="btn btn-ghost btn-square"
               onClick={() => setIsDarkMode(!isDarkMode)}
             >
