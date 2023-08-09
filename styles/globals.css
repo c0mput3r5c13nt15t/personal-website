@@ -11,8 +11,19 @@ body {
   scrollbar-gutter: stable;
 }
 
+.my-glass {
+  background: rgba(0, 0, 0, 0.47);
+  border-radius: 16px;
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+}
+
+[data-theme="dark"] .themed-svg {
+  @apply filter brightness-0;
+}
+
 .section {
-  @apply w-full min-h-screen flex justify-center items-center;
+  @apply w-full flex justify-center items-center;
 }
 
 .mockup-code pre {
