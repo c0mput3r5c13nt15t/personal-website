@@ -2,7 +2,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import HeroiconsWrapper from "../heroiconsWrapper";
 import bg_landing from "../../public/assets/bg-landing.webp";
-import profile_picture from "../../public/assets/pp.jpg";
+import profile_picture from "../../public/assets/pp.webp";
 
 export type LandingProps = {
   titles: string[];
