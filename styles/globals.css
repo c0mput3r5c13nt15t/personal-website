@@ -31,7 +31,7 @@ body {
 }
 
 .contact-button {
-  @apply btn btn-square btn-primary text-white;
+  @apply btn btn-square btn-primary text-white mx-auto;
 }
 
 @media (prefers-color-scheme: dark) {
