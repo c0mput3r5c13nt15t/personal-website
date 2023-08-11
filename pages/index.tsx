@@ -46,6 +46,7 @@ export async function getStaticProps() {
         linkedin: (doc.data()?.contact?.linkedin || "") as string,
         github: (doc.data()?.contact?.github || "") as string,
         mail: (doc.data()?.contact?.mail || "") as string,
+        discord: (doc.data()?.contact?.discord || "") as string,
       },
     };
   });
