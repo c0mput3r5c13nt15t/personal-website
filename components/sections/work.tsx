@@ -21,7 +21,7 @@ export type WorkProps = {
 export default function Work({ title, projects }: WorkProps): JSX.Element {
   return (
     <section id="work" className="section relative flex-col">
-      <h1 className="font-bold text-3xl absolute left-1/2 top-44 -translate-x-1/2 w-full text-center z-10">
+      <h1 className="section-title absolute left-1/2 top-40 -translate-x-1/2 w-full z-10">
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
@@ -29,7 +29,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
           <article
             id={`slide${index}`}
             key={index}
-            className="carousel-item relative w-full pt-64 pb-64"
+            className="carousel-item relative w-full pt-60 pb-64"
           >
             <>
               {index !== 0 && (

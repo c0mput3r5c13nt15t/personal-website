@@ -33,7 +33,7 @@ export default function About({
       <div className="hero bg-base-100 items-start">
         <div className="hero-content w-full max-w-3xl lg:flex-row-reverse items-start">
           <div className="flex flex-col gap-3 w-full">
-            <h1 className="font-bold text-3xl w-full text-center mb-5">
+            <h1 className="section-title">
               {title}
             </h1>
             <div className="tabs w-full justify-start">
@@ -52,8 +52,8 @@ export default function About({
             </div>
             <div className="flex flex-row">
               <div
-                className={`block w-full -mr-[100%] ${
-                  activeTab !== "motivation" ? "invisible" : ""
+                className={`about-me-tab ${
+                  activeTab !== "motivation" ? "opacity-0" : ""
                 }`}
               >
                 <p
@@ -62,8 +62,8 @@ export default function About({
                 />
               </div>
               <div
-                className={`block w-full -mr-[100%] ${
-                  activeTab !== "skills" ? "invisible" : ""
+                className={`about-me-tab ${
+                  activeTab !== "skills" ? "opacity-0" : ""
                 }`}
               >
                 {skills.map((skill) => (
@@ -88,8 +88,8 @@ export default function About({
                 )}
               </div>
               <div
-                className={`block w-full -mr-[100%] ${
-                  activeTab !== "education" ? "invisible" : ""
+                className={`about-me-tab ${
+                  activeTab !== "education" ? "opacity-0" : ""
                 }`}
               >
                 <p
