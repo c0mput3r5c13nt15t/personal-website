@@ -1,0 +1,60 @@
+.mockup-code pre {
+  @apply !p-0;
+}
+
+.mockup-code::-webkit-scrollbar {
+  width: 1rem;
+}
+
+.mockup-code::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.mockup-code::-webkit-scrollbar-thumb {
+  @apply bg-zinc-600;
+  @apply rounded-full;
+}
+
+.const {
+  @apply text-blue-500;
+}
+
+.variable {
+  @apply text-sky-400;
+}
+
+.white {
+  @apply text-white;
+}
+
+.key {
+  @apply text-blue-200;
+}
+
+.value-string {
+  @apply text-orange-400;
+}
+
+.value-number {
+  @apply text-green-300;
+}
+
+.value-undefined {
+  @apply text-blue-500;
+}
+
+.value-boolean {
+  @apply text-blue-500;
+}
+
+.value-error {
+  @apply text-red-500;
+}
+
+.brackets {
+  @apply text-purple-400;
+}
+
+.text-size {
+  @apply text-sm sm:text-base md:text-lg lg:text-xl;
+}
