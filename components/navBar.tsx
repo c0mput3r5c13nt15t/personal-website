@@ -1,12 +1,6 @@
 import HeroiconsWrapper from "./heroiconsWrapper";
 
-export default function Navbar({
-  isDarkMode,
-  setIsDarkMode,
-}: {
-  isDarkMode: boolean;
-  setIsDarkMode: any;
-}) {
+export default function Navbar() {
   const sections = ["about", "work", "contact"];
 
   return (
@@ -84,7 +78,7 @@ export default function Navbar({
             </ul>
           </div>
           <div className="navbar-end">
-            <button
+            {/* <button
               aria-label="Toggle dark mode"
               className="btn btn-ghost btn-square"
               onClick={() => setIsDarkMode(!isDarkMode)}
@@ -106,7 +100,7 @@ export default function Navbar({
                   />
                 </HeroiconsWrapper>
               )}
-            </button>
+            </button> */}
           </div>
         </div>
       </nav>

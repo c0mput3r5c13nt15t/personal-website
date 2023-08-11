@@ -91,6 +91,7 @@ export default function Landing({
                 </button>
                 {github && (
                   <a
+                    data-theme="dark"
                     aria-label="GitHub"
                     className="btn btn-square"
                     href={github}

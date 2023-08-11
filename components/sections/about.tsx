@@ -21,7 +21,7 @@ export default function About({
   skills,
   education,
 }: AboutProps): JSX.Element {
-  const tabs = ["motivation", "skills", "education"];
+  const tabs = ["motivation", "education", "skills"];
   const [activeTab, setActiveTab] = useState<string>(tabs[0]);
 
   function styleText(text: string) {

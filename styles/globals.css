@@ -18,8 +18,10 @@ body {
   -webkit-backdrop-filter: blur(5.1px);
 }
 
-[data-theme="dark"] .themed-svg {
-  @apply filter brightness-0;
+@media (prefers-color-scheme: dark) {
+  .themed-svg {
+    @apply filter brightness-0;
+  }
 }
 
 .section {

@@ -84,15 +84,16 @@ export default function Index({
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    if (localStorage.getItem("darkMode") == "true") {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
       setIsDarkMode(true);
     }
-  }, []);
 
-  useEffect(() => {
-    document.body.setAttribute("data-theme", isDarkMode ? "dark" : "light");
-    localStorage.setItem("darkMode", isDarkMode ? "true" : "false");
-  }, [isDarkMode]);
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (e) => {
+        setIsDarkMode(e.matches);
+      });
+  }, []);
 
   return (
     <>
@@ -106,7 +107,7 @@ export default function Index({
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex flex-col w-full">
-        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
+        <Navbar />
         <Landing {...landingProps} />
         <About {...aboutProps} />
         <Work {...workProps} />
