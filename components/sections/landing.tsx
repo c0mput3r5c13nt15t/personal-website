@@ -48,8 +48,8 @@ export default function Landing({
       />
       <div className="hero min-h-screen">
         <div className="hero-content w-full max-w-[18rem] sm:max-w-3xl">
-          <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 sm:mb-36 items-center">
-            <div className="avatar ml-auto mr-auto w-[50vw] sm:w-80 md:w-96">
+          <div className="flex flex-col sm:flex-row gap-8 sm:gap-10 sm:mb-36 items-center w-full">
+            <div className="avatar ml-auto mr-auto w-[220px] sm:w-80 md:w-96">
               <div className="rounded-full shadow-lg w-full">
                 <Image
                   alt="Profile picture"
@@ -58,7 +58,7 @@ export default function Landing({
                   placeholder="blur"
                   width={300}
                   height={300}
-                  sizes="(min-width: 640px) 50vw, (min-width: 768px) 320px, 384px"
+                  sizes="(max-width: 640px) 220px, (max-width: 768px) 320px, 384px"
                 />
               </div>
             </div>
