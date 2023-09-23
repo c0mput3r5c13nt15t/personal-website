@@ -27,7 +27,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
       <div className="carousel w-full bg-base-100">
         {projects.map((project, index) => (
           <article
-            id={`slide${index}`}
+            id={`project${index}`}
             key={index}
             className="carousel-item relative w-full pt-60 pb-64"
           >
