@@ -6,7 +6,6 @@ export type Project = {
   start?: string;
   end?: string;
   descr: string;
-  image?: string;
   link: {
     text: string;
     href: string;
@@ -25,7 +24,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
-        {projects.map((project, index) => (
+        {projects.reverse().map((project, index) => (
           <article
             id={`project${index}`}
             key={index}
@@ -70,41 +69,29 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
               )}
             </>
             <div className="max-w-3xl mx-auto px-3">
-              <div className="flex flex-col sm:flex-row gap-5">
-                {project.image && (
-                  <Image
-                    alt="Project image"
-                    src={project.image || "/assets/pp.jpg"}
-                    width={400}
-                    height={400}
-                    className="rounded-lg shadow-lg w-full h-40 sm:h-auto sm:w-40"
-                    style={{ objectFit: "cover" }}
-                  />
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-bold w-full">{project.title}</h1>
+                {project.start && (
+                  <h2 className="text-sm opacity-70 uppercase mb-2">
+                    {project.start} - {project.end || "today"}
+                  </h2>
                 )}
-                <div className="flex flex-col">
-                  <h1 className="text-xl font-bold w-full">{project.title}</h1>
-                  {project.start && (
-                    <h2 className="text-sm opacity-70 uppercase mb-2">
-                      {project.start} - {project.end || "today"}
-                    </h2>
-                  )}
-                  <p className="sm:text-lg mb-1">{project.descr}</p>
-                  <a
-                    className="link text-primary"
-                    href={project.link.href}
-                    target="_blank"
-                    rel="noreferrer"
-                  >
-                    {project.link.text}
-                    <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                      />
-                    </HeroiconsWrapper>
-                  </a>
-                </div>
+                <p className="sm:text-lg mb-1">{project.descr}</p>
+                <a
+                  className="link text-primary"
+                  href={project.link.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {project.link.text}
+                  <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                    />
+                  </HeroiconsWrapper>
+                </a>
               </div>
             </div>
           </article>
