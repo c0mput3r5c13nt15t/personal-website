@@ -1,11 +1,11 @@
 import HeroiconsWrapper from "../heroiconsWrapper";
-import Image from "next/image";
 
 export type Project = {
   title: string;
   start?: string;
   end?: string;
   descr: string;
+  order?: number;
   link: {
     text: string;
     href: string;
@@ -24,7 +24,8 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
-        {projects.reverse().map((project, index) => (
+        {projects.reverse()
+        .map((project, index) => (
           <article
             id={`project${index}`}
             key={index}

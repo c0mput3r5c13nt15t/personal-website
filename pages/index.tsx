@@ -34,9 +34,13 @@ export async function getStaticProps() {
   const workProps = getDoc(doc(db, "sections", "work")).then((doc) => {
     return {
       title: (doc.data()?.title || "My recent projects") as string,
-      projects: (doc.data()?.projects || []) as Project[],
+      projects: ((doc.data()?.projects || []) as Project[]).sort(
+        (a, b) => (a.order || 0) - (b.order || 0)
+      ),
     };
   }) as Promise<WorkProps>;
+
+  console.log(await workProps);
 
   // Get props for contact section
   const contactProps = getDoc(doc(db, "sections", "contact")).then((doc) => {
