@@ -40,8 +40,6 @@ export async function getStaticProps() {
     };
   }) as Promise<WorkProps>;
 
-  console.log(await workProps);
-
   // Get props for contact section
   const contactProps = getDoc(doc(db, "sections", "contact")).then((doc) => {
     return {
