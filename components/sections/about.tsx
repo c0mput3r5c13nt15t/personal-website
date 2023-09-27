@@ -40,7 +40,7 @@ export default function About({
               {tabs.map((tab) => (
                 <button
                   key={tab}
-                  className={`tab sm:tab-lg tab-bordered transition-all capitalize ${
+                  className={`tab tab-md sm:tab-lg tab-bordered transition-all capitalize ${
                     tab === activeTab ? "tab-active" : ""
                   }`}
                   onClick={() => setActiveTab(tab)}
