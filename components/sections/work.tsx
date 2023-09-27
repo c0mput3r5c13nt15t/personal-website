@@ -24,7 +24,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
-        {projects.reverse()
+        {projects
         .map((project, index) => (
           <article
             id={`project${index}`}

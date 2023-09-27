@@ -35,7 +35,7 @@ export async function getStaticProps() {
     return {
       title: (doc.data()?.title || "My recent projects") as string,
       projects: ((doc.data()?.projects || []) as Project[]).sort(
-        (a, b) => (a.order || 0) - (b.order || 0)
+        (a, b) => (b.order || 0) - (a.order || 0)
       ),
     };
   }) as Promise<WorkProps>;
