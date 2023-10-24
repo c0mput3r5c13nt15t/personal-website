@@ -79,7 +79,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                 )}
                 <p className="sm:text-lg mb-1">{project.descr}</p>
                 <a
-                  className="link text-primary"
+                  className="link text-primary font-medium"
                   href={project.link.href}
                   target="_blank"
                   rel="noreferrer"

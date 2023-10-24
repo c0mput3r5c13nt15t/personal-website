@@ -1,7 +1,7 @@
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import HeroiconsWrapper from "../heroiconsWrapper";
-import bg_landing from "../../public/assets/bg-landing.webp";
+import bg_landing from "../../public/assets/landing/bg.webp";
 import profile_picture from "../../public/assets/pp.webp";
 
 export type LandingProps = {
@@ -27,13 +27,13 @@ export default function Landing({
   }, [titles]);
 
   return (
-    <section id="landing" className="section relative">
+    <section id="landing" className="section relative bg-base-100">
       <Image
         alt="Background"
         src={bg_landing}
         fill
         quality={100}
-        style={{ objectFit: "cover" }}
+        style={{ objectFit: "cover", objectPosition: "center bottom", opacity: 0.6 }}
         placeholder="blur"
         priority
       />
@@ -62,8 +62,8 @@ export default function Landing({
                 />
               </div>
             </div>
-            <div className="text-zinc-900 w-full">
-              <h1 className="text-3xl font-bold inline-block text-ellipsis overflow-hidden">
+            <div className="w-full">
+              <h1 className="text-3xl font-bold inline-block text-ellipsis overflow-hidden text-black dark:text-white">
                 Hi there! I am
                 <div className="w-min max-w-[18rem]">
                   <div
@@ -75,7 +75,7 @@ export default function Landing({
                 </div>
               </h1>
 
-              <p className="pb-4 text-lg text-black hidden sm:block">
+              <p className="pb-4 text-lg hidden sm:block text-black dark:text-white">
                 {welcomeText}
               </p>
               <div className="flex flex-row gap-2 invisible sm:visible">

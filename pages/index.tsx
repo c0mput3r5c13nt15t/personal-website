@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/navBar";
 import Landing, { LandingProps } from "@/components/sections/landing";
 import Work, { Project, WorkProps } from "@/components/sections/work";
-import About, { AboutProps, skill as Skill } from "@/components/sections/about";
+import About, { AboutProps, interest as Interest } from "@/components/sections/about";
 import Contact, { ContactProps } from "@/components/sections/contact";
 import { doc, getDoc } from "firebase/firestore/lite";
 import { db } from "@/lib/firebase";
@@ -24,7 +24,7 @@ export async function getStaticProps() {
       title: (doc.data()?.title || "About me") as string,
       motivation: (doc.data()?.motivation ||
         "Error while fetching content") as string,
-      skills: (doc.data()?.skills || []) as Skill[],
+      interests: (doc.data()?.interests || []) as Interest[],
       education: (doc.data()?.education ||
         "Error while fetching content") as string,
     };

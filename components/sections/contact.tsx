@@ -1,6 +1,6 @@
 import HeroiconsWrapper from "../heroiconsWrapper";
 import Image from "next/image";
-import bg_contacts from "../../public/assets/bg-contacts.webp";
+import bg_contacts from "../../public/assets/contacts/bg.webp";
 
 export type ContactProps = {
   title: string;
@@ -17,16 +17,16 @@ export default function Contact({
   contact: { linkedin, github, mail, discord },
 }: ContactProps): JSX.Element {
   return (
-    <section id="contact" className="section relative h-screen overflow-hidden">
+    <section id="contact" className="section relative h-screen overflow-hidden bg-base-100">
       <Image
         alt="Background"
         src={bg_contacts} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill
-        style={{ objectFit: "cover", objectPosition: "center" }}
+        style={{ objectFit: "cover", objectPosition: "center", opacity: 0.8 }}
       />
       <Image
         alt="Blob"
-        className="themed-svg scale-150 sm:scale-125 md:scale-100"
+        className="themed-svg scale-125 md:scale-100"
         src={"/assets/blob.svg"}
         fill
         style={{ objectFit: "cover", objectPosition: "center" }}

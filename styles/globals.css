@@ -12,7 +12,7 @@ body {
 }
 
 .my-glass {
-  background: rgba(0, 0, 0, 0.47);
+  background: rgba(0, 0, 0, 0.6);
   border-radius: 16px;
   backdrop-filter: blur(5.1px);
   -webkit-backdrop-filter: blur(5.1px);

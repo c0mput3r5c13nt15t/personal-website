@@ -8,7 +8,7 @@ export default function Navbar() {
       <nav className="px-2 md:px-0 pt-2 w-full max-w-3xl fixed left-1/2 -translate-x-1/2 z-50">
         <div
           data-theme="dark"
-          className="text-white navbar my-glass rounded-none md:rounded-box shadow-lg dark:shadow-none"
+          className="navbar bg-base-100 rounded-box shadow-lg dark:shadow-none"
         >
           <div className="navbar-start">
             <div className="dropdown">
@@ -30,7 +30,7 @@ export default function Navbar() {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-52 gap-1"
+                className="menu dropdown-content mt-3 !-ml-2 z-10 p-2 shadow bg-base-100 rounded-box w-52 gap-1 text-left"
               >
                 {sections.map((section) => (
                   <li key={section}>
@@ -40,7 +40,7 @@ export default function Navbar() {
                           .querySelector(`#${section}`)
                           ?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="capitalize"
+                      className="capitalize font-medium"
                     >
                       {section}
                     </button>
@@ -69,7 +69,7 @@ export default function Navbar() {
                         .querySelector(`#${section}`)
                         ?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="btn btn-sm btn-ghost font-normal capitalize"
+                    className="btn btn-sm font-medium btn-ghost text-base capitalize"
                   >
                     {section}
                   </button>
