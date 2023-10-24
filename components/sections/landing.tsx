@@ -113,7 +113,7 @@ export default function Landing({
           </div>
         </div>
       </div>
-      <button
+      {/* <button
         aria-label="More about me"
         className="btn btn-circle btn-ghost absolute bottom-0 left-1/2 !-translate-x-1/2 mb-5 sm:hidden"
         onClick={() => {
@@ -129,7 +129,7 @@ export default function Landing({
             d="M19.5 8.25l-7.5 7.5-7.5-7.5"
           />
         </HeroiconsWrapper>
-      </button>
+      </button> */}
     </section>
   );
 }
