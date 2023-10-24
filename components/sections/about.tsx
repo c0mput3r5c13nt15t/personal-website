@@ -81,7 +81,7 @@ export default function About({
                   activeTab !== "interests" ? "opacity-0" : ""
                 }`}
               >
-                <div className="flex flex-col gap-8">
+                <div className="flex flex-col gap-6 pt-1">
                   <div className="flex flex-wrap gap-x-2 gap-y-2 sm:gap-y-3">
                     {interests &&
                       interests.map((interest, i) => {
