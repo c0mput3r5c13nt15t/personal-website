@@ -62,7 +62,7 @@ export default function Landing({
                   width={300}
                   height={300}
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 390px"
-                  style={{ objectFit: "cover", objectPosition: "center top" }}
+                  style={{ objectFit: "cover" }}
                 />
               </div>
             </div>
