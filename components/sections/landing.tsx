@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { useEffect } from "react";
-import HeroiconsWrapper from "../heroiconsWrapper";
 import bg_landing from "../../public/assets/landing/bg.webp";
-import profile_picture from "../../public/assets/pp.webp";
+import profile_picture from "../../public/assets/landing/pp.jpg";
 
 export type LandingProps = {
   titles: string[];
@@ -33,7 +32,11 @@ export default function Landing({
         src={bg_landing}
         fill
         quality={100}
-        style={{ objectFit: "cover", objectPosition: "center bottom", opacity: 0.6 }}
+        style={{
+          objectFit: "cover",
+          objectPosition: "center bottom",
+          opacity: 0.6,
+        }}
         placeholder="blur"
         priority
       />
@@ -58,7 +61,8 @@ export default function Landing({
                   placeholder="blur"
                   width={300}
                   height={300}
-                  sizes="(max-width: 640px) 220px, (max-width: 768px) 320px, 384px"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 390px"
+                  style={{ objectFit: "cover", objectPosition: "center top" }}
                 />
               </div>
             </div>
