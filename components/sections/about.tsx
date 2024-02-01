@@ -39,21 +39,20 @@ export default function About({
         <div className="hero-content w-full max-w-3xl lg:flex-row-reverse items-start">
           <div className="flex flex-col gap-3 w-full cursor-default">
             <h1 className="section-title">{title}</h1>
-            <div role="tablist" className="tabs tabs-bordered">
+            <div className="tabs tabs-bordered">
               {Object.keys(contents).map((tab) => (
                 <>
                   <input
                     key={`${tab}-radio`}
                     type="radio"
                     name="about-tabs"
-                    role="tab"
                     className="tab transition-all capitalize max-w-[calc((100vw-3rem)/3)]"
                     aria-label={tab}
                     defaultChecked={tab === "motivation"}
                   />
                   <div
                     key={`${tab}-content`}
-                    role="tabpanel"
+                    aria-labelledby={tab}
                     className="tab-content pt-2"
                   >
                     {contents[tab] ? (
