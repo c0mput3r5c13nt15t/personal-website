@@ -2,6 +2,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import bg_landing from "../../public/assets/landing/bg.webp";
 import profile_picture from "../../public/assets/landing/pp.jpg";
+import Link from "next/link";
 
 export type LandingProps = {
   titles: string[];
@@ -83,16 +84,9 @@ export default function Landing({
                 {welcomeText}
               </p>
               <div className="flex flex-row gap-2 invisible sm:visible">
-                <button
-                  className="btn btn-primary"
-                  onClick={() => {
-                    document
-                      .querySelector("#about")
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                >
+                <Link className="btn btn-primary" href="#about" scroll={true}>
                   More about me
-                </button>
+                </Link>
                 {github && (
                   <a
                     data-theme="dark"

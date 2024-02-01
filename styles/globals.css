@@ -11,6 +11,11 @@ body {
   scrollbar-gutter: stable;
 }
 
+/* Handles overflow for the tab labels */
+.tab:is(input[type="radio"]):after {
+  @apply overflow-y-hidden whitespace-nowrap text-ellipsis overflow-hidden;
+}
+
 .my-glass {
   background: rgba(0, 0, 0, 0.6);
   border-radius: 16px;

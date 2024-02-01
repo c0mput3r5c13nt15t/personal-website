@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroiconsWrapper from "./heroiconsWrapper";
 
 export default function Navbar() {
@@ -34,45 +35,36 @@ export default function Navbar() {
               >
                 {sections.map((section) => (
                   <li key={section}>
-                    <button
-                      onClick={() => {
-                        document
-                          .querySelector(`#${section}`)
-                          ?.scrollIntoView({ behavior: "smooth" });
-                      }}
+                    <Link
+                      href={`#${section}`}
+                      scroll={true}
                       className="capitalize font-medium"
                     >
                       {section}
-                    </button>
+                    </Link>
                   </li>
                 ))}
               </ul>
             </div>
-            <button
-              onClick={() => {
-                document
-                  .querySelector("#landing")
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
+            <Link
+              href="#landing"
+              scroll={true}
               className="btn btn-ghost normal-case text-xl"
             >
               Paul Maier
-            </button>
+            </Link>
           </div>
           <div className="navbar-center hidden md:flex">
             <ul className="flex flex-row gap-3 px-1">
               {sections.map((section) => (
                 <li key={section}>
-                  <button
-                    onClick={() => {
-                      document
-                        .querySelector(`#${section}`)
-                        ?.scrollIntoView({ behavior: "smooth" });
-                    }}
+                  <Link
+                    href={`#${section}`}
+                    scroll={true}
                     className="btn btn-sm font-medium btn-ghost text-base capitalize"
                   >
                     {section}
-                  </button>
+                  </Link>
                 </li>
               ))}
             </ul>

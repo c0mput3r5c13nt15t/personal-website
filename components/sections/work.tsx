@@ -1,3 +1,4 @@
+import Link from "next/link";
 import HeroiconsWrapper from "../heroiconsWrapper";
 
 export type Project = {
@@ -24,8 +25,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
         {title}
       </h1>
       <div className="carousel w-full bg-base-100">
-        {projects
-        .map((project, index) => (
+        {projects.map((project, index) => (
           <article
             id={`project${index}`}
             key={index}
@@ -33,13 +33,10 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
           >
             <>
               {index !== 0 && (
-                <button
+                <Link
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                  onClick={() => {
-                    document
-                      .querySelector("#project" + (index - 1))
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  href={`#project${index - 1}`}
+                  scroll={true}
                 >
                   <HeroiconsWrapper>
                     <path
@@ -48,16 +45,13 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                       d="M15.75 19.5L8.25 12l7.5-7.5"
                     />
                   </HeroiconsWrapper>
-                </button>
+                </Link>
               )}
               {index !== projects.length - 1 && (
-                <button
+                <Link
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                  onClick={() => {
-                    document
-                      .querySelector("#project" + (index + 1))
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
+                  href={`#project${index + 1}`}
+                  scroll={true}
                 >
                   <HeroiconsWrapper>
                     <path
@@ -66,7 +60,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                       d="M8.25 4.5l7.5 7.5-7.5 7.5"
                     />
                   </HeroiconsWrapper>
-                </button>
+                </Link>
               )}
             </>
             <div className="max-w-3xl mx-auto px-3">
@@ -98,21 +92,18 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
           </article>
         ))}
       </div>
-      <div className="btn-group absolute left-1/2 bottom-48 -translate-x-1/2">
+      <div className="join absolute left-1/2 bottom-48 -translate-x-1/2">
         {Array(projects.length)
           .fill(0)
           .map((_, index) => (
-            <button
+            <Link
+              className="btn join-item btn-primary btn-sm"
+              href={`#project${index}`}
               key={index}
-              className="btn btn-primary btn-sm"
-              onClick={() => {
-                document
-                  .querySelector("#project" + index)
-                  ?.scrollIntoView({ behavior: "smooth" });
-              }}
+              scroll={true}
             >
               {`${index + 1}`.slice(-2)}
-            </button>
+            </Link>
           ))}
       </div>
       {/* <div className="hero bg-base-100 items-start">
