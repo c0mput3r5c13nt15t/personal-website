@@ -41,7 +41,7 @@ export default function About({
             <h1 className="section-title">{title}</h1>
             <div className="tabs tabs-bordered">
               {Object.keys(contents).map((tab) => (
-                <>
+                <div key={tab}>
                   <input
                     key={`${tab}-radio`}
                     type="radio"
@@ -110,7 +110,7 @@ export default function About({
                       <p>Could not find content for tab {tab}</p>
                     )}
                   </div>
-                </>
+                </div>
               ))}
             </div>
           </div>
