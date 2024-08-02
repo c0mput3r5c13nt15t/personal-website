@@ -4,12 +4,16 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100vw;
   overflow-x: hidden;
   overflow-y: scroll;
 }
 
 body {
   scrollbar-gutter: stable;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 /* Handles overflow for the tab labels */
@@ -58,6 +62,6 @@ body {
 
 @supports (-moz-appearance: none) {
   .wave {
-    @apply object-fill min-w-[3000px] overflow-hidden;
+    @apply object-fill !left-1/2 -translate-x-1/2 min-w-[1000px] overflow-hidden;
   }
 }

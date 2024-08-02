@@ -35,12 +35,12 @@ export default function Landing({
         quality={100}
         placeholder="blur"
         priority
-        className="opacity-60 object-cover object-bottom"
+        className="opacity-60 object-cover object-bottom border-b-black border-b-[2px]"
       />
       <Image
         id="about"
         alt="Wave"
-        className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)] wave"
+        className="themed-svg scale-y-[20%] translate-y-[calc(40%)] wave"
         src={"/assets/wave-inverted.svg"}
         fill
         priority

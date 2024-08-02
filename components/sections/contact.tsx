@@ -23,7 +23,7 @@ export default function Contact({
     >
       <Image
         alt="Background"
-        className="border-t-black border-t-[2px] opacity-70 object-cover"
+        className="border-y-black border-t-[2px] opacity-70 object-cover"
         src={bg_contacts} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill
       />
