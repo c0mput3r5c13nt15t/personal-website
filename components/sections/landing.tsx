@@ -33,20 +33,15 @@ export default function Landing({
         src={bg_landing}
         fill
         quality={100}
-        style={{
-          objectFit: "cover",
-          objectPosition: "center bottom",
-          opacity: 0.6,
-        }}
         placeholder="blur"
         priority
+        className="opacity-60"
       />
       <Image
         id="about"
         alt="Wave"
         className="themed-svg scale-y-[20%] translate-y-[calc(40%+1px)]"
         src={"/assets/wave-inverted.svg"}
-        style={{ objectFit: "cover" }}
         fill
         priority
       />

@@ -17,34 +17,33 @@ export default function Contact({
   contact: { linkedin, github, mail, discord },
 }: ContactProps): JSX.Element {
   return (
-    <section id="contact" className="section relative h-screen overflow-hidden bg-base-100">
+    <section
+      id="contact"
+      className="section relative h-screen overflow-hidden bg-base-100"
+    >
       <Image
         alt="Background"
-        className="border-t-black border-t-[2px]"
+        className="border-t-black border-t-[2px] opacity-70"
         src={bg_contacts} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill
-        style={{ objectFit: "cover", objectPosition: "center", opacity: 0.8 }}
       />
       <Image
         alt="Blob"
-        className="themed-svg scale-125 md:scale-100"
+        className="themed-svg scale-150 md:scale-125"
         src={"/assets/blob.svg"}
         fill
-        style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Image
         alt="Wave"
         className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg"
         src={"/assets/wave.svg"}
         fill
-        style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Image
         alt="Wave"
         className="themed-svg -scale-y-[20%] translate-y-[calc(40%)]"
         src={"/assets/wave.svg"}
         fill
-        style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <div className="z-10">
         <h1 className="text-4xl font-bold mb-4 w-full text-center">{title}</h1>
