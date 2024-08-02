@@ -20,6 +20,7 @@ export default function Contact({
     <section id="contact" className="section relative h-screen overflow-hidden bg-base-100">
       <Image
         alt="Background"
+        className="border-t-black border-t-[2px]"
         src={bg_contacts} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill
         style={{ objectFit: "cover", objectPosition: "center", opacity: 0.8 }}
@@ -33,14 +34,14 @@ export default function Contact({
       />
       <Image
         alt="Wave"
-        className="scale-y-[20%] -translate-y-[calc(40%+1px)] themed-svg"
+        className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg"
         src={"/assets/wave.svg"}
         fill
         style={{ objectFit: "cover", objectPosition: "center" }}
       />
       <Image
         alt="Wave"
-        className="themed-svg -scale-y-[20%] translate-y-[calc(40%+1px)]"
+        className="themed-svg -scale-y-[20%] translate-y-[calc(40%)]"
         src={"/assets/wave.svg"}
         fill
         style={{ objectFit: "cover", objectPosition: "center" }}
