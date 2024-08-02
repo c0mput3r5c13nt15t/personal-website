@@ -23,7 +23,7 @@ export default function Contact({
     >
       <Image
         alt="Background"
-        className="border-t-black border-t-[2px] opacity-70"
+        className="border-t-black border-t-[2px] opacity-70 object-cover"
         src={bg_contacts} // Copyright: https://tiago-sousa.artstation.com/projects/xJWg9W
         fill
       />
@@ -35,13 +35,13 @@ export default function Contact({
       />
       <Image
         alt="Wave"
-        className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg"
+        className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg wave"
         src={"/assets/wave.svg"}
         fill
       />
       <Image
         alt="Wave"
-        className="themed-svg -scale-y-[20%] translate-y-[calc(40%)]"
+        className="themed-svg -scale-y-[20%] translate-y-[calc(40%)] wave"
         src={"/assets/wave.svg"}
         fill
       />

@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 html {
-  --scroll-behavior: smooth !important;
-  scroll-behavior: smooth !important;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 body {
@@ -48,5 +49,15 @@ body {
 @media (prefers-reduced-motion: reduce) {
   #typingContent {
     @apply animate-none border-none;
+  }
+}
+
+.wave {
+  @apply object-cover;
+}
+
+@supports (-moz-appearance: none) {
+  .wave {
+    @apply object-fill min-w-[3000px] overflow-hidden;
   }
 }
