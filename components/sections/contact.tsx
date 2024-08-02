@@ -35,13 +35,13 @@ export default function Contact({
       />
       <Image
         alt="Wave"
-        className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg wave"
+        className="scale-y-[20%] -translate-y-[calc(40%)] themed-svg object-wave"
         src={"/assets/wave.svg"}
         fill
       />
       <Image
         alt="Wave"
-        className="themed-svg -scale-y-[20%] translate-y-[calc(40%)] wave"
+        className="themed-svg -scale-y-[20%] translate-y-[calc(40%)] object-wave"
         src={"/assets/wave.svg"}
         fill
       />

@@ -40,7 +40,7 @@ export default function Landing({
       <Image
         id="about"
         alt="Wave"
-        className="themed-svg scale-y-[20%] translate-y-[calc(40%)] wave"
+        className="themed-svg scale-y-[20%] translate-y-[calc(40%)] object-wave"
         src={"/assets/wave-inverted.svg"}
         fill
         priority

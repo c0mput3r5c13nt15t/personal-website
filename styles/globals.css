@@ -56,12 +56,6 @@ body {
   }
 }
 
-.wave {
-  @apply object-cover;
-}
-
-@supports (-moz-appearance: none) {
-  .wave {
-    @apply object-fill !left-1/2 -translate-x-1/2 min-w-[1000px] overflow-hidden;
-  }
+.object-wave {
+  @apply object-fill !left-1/2 -translate-x-1/2 min-w-[1000px] overflow-hidden;
 }
