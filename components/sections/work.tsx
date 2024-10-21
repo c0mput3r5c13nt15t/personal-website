@@ -117,6 +117,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
           .fill(0)
           .map((_, index) => (
             <progress
+              key={index}
               className="progress progress-primary aspect-square"
               value={0}
               max="100"
