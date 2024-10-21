@@ -119,7 +119,7 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
             <progress
               key={index}
               className="progress progress-primary aspect-square"
-              value={0}
+              value={100}
               max="100"
             ></progress>
           ))}
