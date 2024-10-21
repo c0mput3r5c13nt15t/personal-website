@@ -29,7 +29,7 @@ export default function Contact({
       />
       <Image
         alt="Blob"
-        className="themed-svg scale-150 md:scale-125"
+        className="themed-svg portrait:scale-[300%] landscape:scale-125"
         src={"/assets/blob.svg"}
         fill
       />

@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import Navbar from "@/components/navBar";
 import Landing, { LandingProps } from "@/components/sections/landing";
 import Work, { Project, WorkProps } from "@/components/sections/work";
-import About, { AboutProps, interest as Interest } from "@/components/sections/about";
+import About, {
+  AboutProps,
+  interest as Interest,
+} from "@/components/sections/about";
 import Contact, { ContactProps } from "@/components/sections/contact";
 import { doc, getDoc } from "firebase/firestore/lite";
 import { db } from "@/lib/firebase";
@@ -102,10 +105,57 @@ export default function Index({
     <>
       <Head>
         <title>Paul Maier (c0mput3r5c13nt15t)</title>
+
+        {/* Meta tags for search engines */}
         <meta
+          key="description"
           name="description"
           content="Hi there, I am Paul Maier and this is my personal website."
         />
+        <meta
+          key="keywords"
+          name="keywords"
+          content={[
+            "Paul Maier",
+            "c0mput3r5c13nt15t",
+            "Cybersecurity",
+            "Computer Science",
+            "Software Engineering",
+          ].join(", ")}
+        />
+        <meta name="author" content="Paul Maier" />
+
+        {/* Open Graph (OG) tags for link previews */}
+        <meta key="og-title" property="og:title" content="Paul Maier" />
+        <meta
+          key="og-description"
+          property="og:description"
+          content="Hi there, I am Paul Maier and this is my personal website."
+        />
+        <meta
+          key="og-image"
+          property="og:image"
+          content="https://paulmaier.online/assets/landing/pp.jpg"
+        />
+        <meta
+          key="og-url"
+          property="og:url"
+          content="https://paulmaier.online"
+        />
+
+        {/* Twitter card tags for link previews */}
+        <meta key="twitter-title" name="twitter:title" content="Paul Maier" />
+        <meta
+          key="twitter-description"
+          name="twitter:description"
+          content="Hi there, I am Paul Maier and this is my personal website."
+        />
+        <meta
+          key="twitter-image"
+          name="twitter:image"
+          content="https://paulmaier.online/assets/landing/pp.jpg"
+        />
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
