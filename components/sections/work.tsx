@@ -7,9 +7,9 @@ export type Project = {
   end?: string;
   descr: string;
   order?: number;
-  link: {
+  link?: {
     text: string;
-    href: string;
+    href?: string;
   };
 };
 
@@ -24,78 +24,80 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
       <h1 className="section-title absolute left-1/2 top-40 -translate-x-1/2 w-full z-10">
         {title}
       </h1>
-      <div
-        className="carousel w-full bg-base-100"
-        style={{ WebkitOverflowScrolling: "touch", overflowY: "scroll" }}
-      >
-        {projects.map((project, index) => (
-          <article
-            id={`project${index}`}
-            key={index}
-            className="carousel-item relative w-full pt-60 pb-64"
-          >
-            <>
-              {index !== 0 && (
-                <Link
-                  className="hidden 2xl:flex btn btn-square btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                  href={`#project${index - 1}`}
-                  scroll={true}
-                >
-                  <HeroiconsWrapper>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 19.5L8.25 12l7.5-7.5"
-                    />
-                  </HeroiconsWrapper>
-                </Link>
-              )}
-              {index !== projects.length - 1 && (
-                <Link
-                  className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
-                  href={`#project${index + 1}`}
-                  scroll={true}
-                >
-                  <HeroiconsWrapper>
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </HeroiconsWrapper>
-                </Link>
-              )}
-            </>
-            <div className="max-w-3xl mx-auto px-3">
-              <div className="flex flex-col">
-                <h1 className="text-2xl font-bold w-full">{project.title}</h1>
-                {project.start && (
-                  <h2 className="text-sm opacity-70 uppercase mb-2">
-                    {project.start} - {project.end || "today"}
-                  </h2>
+      <div className="carousel w-full bg-base-100">
+        {projects
+          .sort((a, b) => (a.order || 0) - (b.order || 0))
+          .map((project, index) => (
+            <article
+              id={`project${index}`}
+              key={index}
+              className="carousel-item relative w-full pt-60 pb-64"
+            >
+              <>
+                {index !== 0 && (
+                  <Link
+                    className="hidden 2xl:flex btn btn-square btn-ghost absolute left-1/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                    href={`#project${index - 1}`}
+                    scroll={true}
+                  >
+                    <HeroiconsWrapper>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5"
+                      />
+                    </HeroiconsWrapper>
+                  </Link>
                 )}
-                <p className="sm:text-lg mb-1">{project.descr}</p>
-                <a
-                  className="link text-primary font-medium"
-                  href={project.link.href}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  {project.link.text}
-                  <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                    />
-                  </HeroiconsWrapper>
-                </a>
+                {index !== projects.length - 1 && (
+                  <Link
+                    className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
+                    href={`#project${index + 1}`}
+                    scroll={true}
+                  >
+                    <HeroiconsWrapper>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </HeroiconsWrapper>
+                  </Link>
+                )}
+              </>
+              <div className="max-w-3xl mx-auto px-3">
+                <div className="flex flex-col">
+                  <h1 className="text-2xl font-bold w-full">{project.title}</h1>
+                  {project.start && (
+                    <h2 className="text-sm opacity-70 uppercase mb-2">
+                      {project.start} - {project.end || "today"}
+                    </h2>
+                  )}
+                  <p className="sm:text-lg mb-1">{project.descr}</p>
+                  {project.link && (
+                    <a
+                      className="link text-primary font-medium"
+                      href={project.link.href}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {project.link.text || project.link.href}
+                      <HeroiconsWrapper className="inline-block h-5 w-5 ml-1 -translate-y-1">
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                        />
+                      </HeroiconsWrapper>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
       </div>
-      <div className="join absolute left-1/2 bottom-48 -translate-x-1/2">
+      {/* Buttons to click through the projects */}
+      <div className="join absolute left-1/2 bottom-48 -translate-x-1/2 portrait:hidden">
         {Array(projects.length)
           .fill(0)
           .map((_, index) => (
@@ -109,6 +111,19 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
             </Link>
           ))}
       </div>
+      {/* Dots to indicate the current project */}
+      <div className="join absolute left-1/2 bottom-48 -translate-x-1/2 flex flex-row gap-3 landscape:hidden">
+        {Array(projects.length)
+          .fill(0)
+          .map((_, index) => (
+            <progress
+              className="progress progress-primary aspect-square"
+              value={0}
+              max="100"
+            ></progress>
+          ))}
+      </div>
+
       {/* <div className="hero bg-base-100 items-start">
         <div className="hero-content max-w-none w-full lg:flex-row-reverse items-start px-0">
           <div className="flex flex-col gap-3 w-full items-center">
