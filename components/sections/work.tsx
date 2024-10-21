@@ -52,6 +52,12 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                   href={`#project${index + 1}`}
                   scroll={true}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document
+                      ?.getElementById(`project${index + 1}`)
+                      ?.scrollIntoView({ behavior: "smooth" });
+                  }}
                 >
                   <HeroiconsWrapper>
                     <path
