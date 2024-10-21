@@ -24,7 +24,10 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
       <h1 className="section-title absolute left-1/2 top-40 -translate-x-1/2 w-full z-10">
         {title}
       </h1>
-      <div className="carousel w-full bg-base-100">
+      <div
+        className="carousel w-full bg-base-100"
+        style={{ WebkitOverflowScrolling: "touch", overflowY: "scroll" }}
+      >
         {projects.map((project, index) => (
           <article
             id={`project${index}`}
@@ -52,12 +55,6 @@ export default function Work({ title, projects }: WorkProps): JSX.Element {
                   className="hidden 2xl:flex btn btn-square btn-ghost absolute left-3/4 top-1/2 !-translate-y-1/2 !-translate-x-1/2 z-10"
                   href={`#project${index + 1}`}
                   scroll={true}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document
-                      ?.getElementById(`project${index + 1}`)
-                      ?.scrollIntoView({ behavior: "smooth" });
-                  }}
                 >
                   <HeroiconsWrapper>
                     <path
